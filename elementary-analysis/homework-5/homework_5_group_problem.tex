@@ -1,0 +1,67 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.7in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\subsubsection*{Group Problem 5.5}
+\begin{flushleft}
+Recall that a function $f \in \mathbb{R}^2$ is called a polynomial if there is a non-negative integer $n$ (called "the degree" of $f$) and real numbers $c0, c1, ..., cn$, such that for every $x \in \mathbb{R}$.
+\begin{center}
+$f(x) = \sum_{i=0}^{n} c_ix^i$
+\end{center}
+Use induction and the theorem about combining the limits to prove that every polynomial is continuous on $\mathbb{R}$. (Note: the results about combining limits apply to at most two functions at a time. Also don't forget that you must check the case when $n = 0$, specifically, when $f$ is a constant function).
+\end{flushleft}
+
+\subsubsection*{Proof}
+\begin{flushleft}
+First, we'll prove the base case of $n=1$. When $n=1$,
+\begin{center}
+$\sum_{i=0}^{1} c_ix^i = c_0 + c_1x$.
+\end{center}
+Since the limit of the resulting function is constructed based on the two limit definitions of
+\begin{center}
+\begin{tabular}{c c}
+$\lim_{x \to a} c = c$ & $\lim_{x \to a} x = a$,
+\end{tabular}
+\end{center}
+we can combine them to show that $c_0 + c_1x$ is continuous if the limit exists for $\lim_{x \to a} c_0 + c_1x$. Thus, we know the polynomial of $n=1$ is also continuous.
+
+\vspace{1.5cm}
+
+Next, for the induction step, we assume a polynomial $P_n$ is continuous as defined $f(x) = c_0 + c_1x + ... + c_nx^n$. Let $g(x)=c_{n+1}x^{n+1}$. We know $c_1x$ and $c_nx^n$ are continuous from our initial assumption about $P_n$, so we can see that $c_{n+1}(x^n \cdot x)$ is also continuous for any $c \in \mathbb{R}$ as a result of 
+
+\begin{center}
+\begin{tabular}{l}
+$\lim_{x \to a} (f \cdot g)(x)$ \\
+$\lim_{x \to a} (cf)(x)$, $\forall c \in \mathbb{R}$. \\
+\end{tabular}
+\end{center}
+
+Since $g(x)$ is also continuous, we know by $\lim_{x \to a} (f + g)(x)$ that $P_{n+1}$ is also continuous. This completes the proof.
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,185 @@
+\documentclass{article}
+    
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.5in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{environ}
+
+\NewEnviron{myequation}{%
+    \begin{equation}
+    \scalebox{1.5}{$\BODY$}
+    \end{equation}
+}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 5}
+\begin{flushleft}
+Let's consider all the numbers that are the sum of a rational and a rational mulitple of $\sqrt{2}$. In other words, let's define
+\begin{center}
+\begin{equation*}
+\mathbb{Q}[\sqrt{2}] = \{ r + s \sqrt{2} : r, s \in \mathbb{Q} \}
+\end{equation*}
+\end{center}
+\end{flushleft}
+\begin{flushleft}
+In this quesiton you'll prove that this is a field (using the usual notions of addition and multiplication). You may assume that $\mathbb{R}$ is a field (as will be our standard assumption from now on).
+\begin{enumerate}[a)]
+\item Check that addition and multiplication of elements of $\mathbb{Q}[\sqrt{2}]$ results in other elements of $\mathbb{Q}[\sqrt{2}]$. This tells us that we can do arithmetic with things of this form and always end up with things of this form. \\
+\begin{flushleft}
+\qquad Let's assume that there exists some elements $p$ and $q \in \mathbb{Q}[\sqrt{2}]$. If we prove that both $p + q \in \mathbb{Q}[\sqrt{2}]$ and $pq \in \mathbb{Q}[\sqrt{2}]$, \\
+\qquad then we know $\mathbb{Q}[\sqrt{2}]$ is closed under both addition and multiplication.
+\begin{center}
+\begin{tabular}{r c c l}
+(1) & $(r_p + s_p \sqrt{2}) + (r_q + s_q \sqrt{2})$ & $(r_p + s_p \sqrt{2})(r_q + s_q \sqrt{2})$ & (2)
+\end{tabular}
+\end{center}
+\qquad Let's first take a look at addition, denoted by equation (1): \\
+\begin{center}
+$(r_p + s_p \sqrt{2} + r_q + s_q \sqrt{2})$ \\
+\vspace{0.25cm}
+$(r_p + r_q + s_p \sqrt{2} + s_q \sqrt{2})$ \\
+\vspace{0.25cm}
+$(r_p + r_q) + (s_p \sqrt{2} + s_q \sqrt{2})$ \\
+\vspace{0.25cm}
+$(r_p + r_q) + ((s_p + s_q)\sqrt{2})$ \\
+\end{center}
+\qquad Now let's say there exists another element $t \in \mathbb{Q}[\sqrt{2}]$. We can redefine $(r_p + r_q)$ to equal $r_t$ because according to the \\
+\qquad rules of addition in $\mathbb{Q}$, when $p \in \mathbb{Q}$ and $q \in \mathbb{Q}$, then $(p + q) \in \mathbb{Q}$. By the same notion, $(s_p + s_q)$ to equal $t_s$. Therefore, \\
+\qquad  $\mathbb{Q}[\sqrt{2}]$ is closed under addition.
+
+\vspace{.5cm}
+
+\qquad Next let's look at multiplication, denoted by equation (2): \\
+\begin{center}
+$(r_p + s_p \sqrt{2})(r_q + s_q \sqrt{2})$ \\
+\vspace{0.25cm}
+$(r_p)(r_q) + (r_q)(s_p \sqrt{2}) + (r_p)(s_q \sqrt{2}) + 2(s_q)(s_p)$ \\
+\vspace{0.25cm}
+$(r_p r_q) + ((r_q s_p) \sqrt{2}) + ((r_p s_q) \sqrt{2}) + (2s_q s_p)$ \\
+\vspace{0.25cm}
+$(r_p r_q) + (((r_q s_p) + (r_p s_q)) \sqrt{2}) + (2s_q s_p)$ \\
+\vspace{0.25cm}
+$(r_p r_q) + (((r_q s_p) + (r_p s_q)) \sqrt{2}) \sqrt{2})$ \\
+\vspace{0.25cm}
+$(r_p r_q + 2s_q s_p) + (((r_q s_p) + (r_p s_q)) \sqrt{2})$ \\
+\end{center}
+\qquad Just as we saw with addition, we can redefine $(r_p r_q + 2s_q s_p)$ and $((r_q s_p) + (r_p s_q))$ which will both still be in $\mathbb{Q}$. \\
+\qquad Therefore, $\mathbb{Q}[\sqrt{2}]$ is closed under multiplication. \\
+\end{flushleft}
+
+\item Check that negatives and reciprocals of elements of $\mathbb{Q}[\sqrt{2}]$ are in $\mathbb{Q}[\sqrt{2}]$. \\
+
+\begin{flushleft}
+\qquad Let's assume that there exists some element $p \in \mathbb{Q}[\sqrt{2}]$. If we prove that both $-p \in \mathbb{Q}[\sqrt{2}]$ and $p^{-1} \in \mathbb{Q}[\sqrt{2}]$, \\
+\qquad then we know $\mathbb{Q}[\sqrt{2}]$ is closed to both the negative and inverse of elements in $\mathbb{Q}[\sqrt{2}]$.
+\begin{center}
+\begin{tabular}{r c c l}
+(1) & $-(r_p + s_p \sqrt{2})$ & $(r_p + s_p \sqrt{2})^{-1}$ & (2)
+\end{tabular}
+\end{center}
+\qquad Let's first take a look at negation, denoted by equation (1): \\
+\begin{center}
+$(-1)(r_p + s_p \sqrt{2})$ \\
+\vspace{0.25cm}
+$(-1)(r_p) + (-1)(s_p \sqrt{2})$ \\
+\vspace{0.25cm}
+$(-r_p) + ((-s_p) \sqrt{2})$\\
+\end{center}
+\qquad Now let's say there exists another element $q \in \mathbb{Q}[\sqrt{2}]$. We can redefine $(-r_p)$ to equal $r_q$. By the same notion, $(-s_p)$ \\
+\qquad can be redefined to $q_s$. $r_q + s_q \sqrt{2} \in \mathbb{Q}[\sqrt{2}]$.
+
+\vspace{.5cm}
+
+\qquad Next let's look at reciprocal, denoted by equation (2). Note, $p^{-1} = 1/p$. Additionally, we can multiply by the \\
+\qquad opposite reciprocal in order to split the numerator with a common denominator.\\
+
+\begin{center}
+$(r_p + s_p \sqrt{2})^{-1}$ \\
+\vspace{0.25cm}
+$\frac{1}{(r_p + s_p \sqrt{2})}$ \\
+\vspace{0.25cm}
+$\frac{1}{(r_p + s_p \sqrt{2})} \cdot \frac{r_p-s_p\sqrt{2}}{r_p-s_p\sqrt{2}}$ \\
+\vspace{0.25cm}
+$\frac{r_p-s_p\sqrt{2}}{r_p^2 - 2s_p^2}$ \\
+\vspace{0.25cm}
+$\frac{r_p}{r_p^2 - 2s_p^2} - \frac{s_p\sqrt{2}}{r_p^2 - 2s_p^2}$ \\
+\vspace{0.25cm}
+$\frac{r_p}{r_p^2 - 2s_p^2} + \frac{s_p}{2s_p^2 - r_p^2}\sqrt{2}$ \\
+\end{center}
+\qquad Like with each of the situations before, we can redefine $\frac{r_p}{r_p^2 - 2s_p^2}$ and $\frac{s_p}{2s_p^2 - r_p^2}$ to be $r_q$ and $s_q$ respectively. Both will \\ 
+\qquad still be in $\mathbb{Q}[\sqrt{2}]$. Therefore, the reciprocal is closed in $\mathbb{Q}[\sqrt{2}]$. \\
+\end{flushleft}
+
+\item Explain briefly why axioms, such as A1, whose quantifiers are purely "$\forall$" are automaticlly true for  $\mathbb{Q}[\sqrt{2}]$ since they are true for $\mathbb{R}$. Pick out which axioms this argument works for.
+
+\vspace{.5cm}
+
+\qquad For $\mathbb{Q}[\sqrt{2}]$ to be a field, it must be a set together with two binary operations called \emph{addition} and \emph{multiplication} that \\
+\qquad satisfies the 11 axioms as previously defined. The axioms containing "$\forall x$"as defined in $\mathbb{R}$ automatically hold "$\forall$" in \\ 
+\qquad $\mathbb{Q}[\sqrt{2}]$ because any subset of $\mathbb{Q}$ is also a subset of $\mathbb{R}$ since $\mathbb{Q} \subset \mathbb{R}$. However, some of the axioms contain "$\exists x$" in \\
+\qquad them, which do not automatically extend to $\mathbb{Q}[\sqrt{2}]$ because although $\mathbb{Q} \subset \mathbb{R}$, $\mathbb{R} \not \subset \mathbb{Q}$. Such axioms are A2, A3, A7, \\
+\qquad A8, A11. Therefore, there will be some elements of $\mathbb{R}$ that do not exist in $\mathbb{Q}$. Those axioms must therefore be \\ \qquad proved. Such axioms are A1, A4, A5, A6, A9, and A10. 
+
+\item Prove that $\mathbb{Q}[\sqrt{2}]$ is a field, using your results from earlier parts.
+
+\vspace{.5cm}
+
+\qquad As stated in part (c), the axioms that do not automatically hold for $\mathbb{Q}[\sqrt{2}]$ are A1, A4, A5, A6, A9, and A10. In \\
+\qquad  part (a), we proved that there was closure under addition and multiplication, satisfying axioms A1 and A6. In part \\
+\qquad (b), we proved the existence of both additive and multiplicative inverses, satisfying axioms A5 and A10. The only \\
+\qquad ones left to prove are A4 and A9. 
+
+\vspace{.5cm}
+
+\qquad To prove A4, we need to show there exists an additive identity such that $\forall a \in \mathbb{F}$, $a+0=a$ In this case, we can \\
+\qquad redefine $r + s\sqrt{2}$ as $a$.
+
+\begin{center}
+$(r + s \sqrt{2}) + 0 = (r + s \sqrt{2})$\\
+$((r + s \sqrt{2}) + (-(r + s \sqrt{2}))) + 0 = (r + s \sqrt{2}) + (-(r + s \sqrt{2})))$
+\end{center}
+
+\qquad From here, we can use the A5 (since we proved it in part (b)), which states the existance of an additive inverse such \\
+\qquad that $a + (-a)=0$. We redefined $(r + s \sqrt{2})$ as $a$, so we know the above equation simplifies to $0=0$. Thus, Axiom A4\\
+\qquad holds. 
+
+\vspace{.5cm}
+
+\qquad To prove A9, we need to show there exists an multiplicative identity such that $\forall a \in \mathbb{F}$, with $a \neq 0$, $a\cdot 1=a$. Again, \\
+\qquad we can redefine $r + s\sqrt{2}$ as $a$.
+
+\begin{center}
+$1 \cdot (r + s \sqrt{2}) = (r + s \sqrt{2})$\\
+\end{center}
+
+\qquad From here, we can use the A10 (since we proved it in part (b)), which states the existance of an multiplicative \\
+\qquad inverse. We redefined $(r + s \sqrt{2})$ as $a$, so we know the above equation implifies to $1=1$. Thus, Axiom A9 holds.
+
+\vspace{.5cm}
+
+\qquad We have now proved that all 11 axioms hold for $\mathbb{Q}[\sqrt{2}]$ under the binary operations of \emph{addition} and \emph{multiplication}. \\
+\qquad Thus, $\mathbb{Q}[\sqrt{2}]$ is a field.
+\end{enumerate}
+\end{flushleft}
+
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

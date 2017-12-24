@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,stmaryrd}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{fixltx2e}
+\usepackage{xcolor}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+\title{Math 310 Homework 6}
+\author{Jacob Shiohira}
+\maketitle
+
+\noindent
+\textit{Note:} This homework took a total of 6 hours. I initially did it alone, but I did review with Jacob Warner.
+
+\begin{problem}{1} Section 2.2 \#13 \\
+
+\noindent
+\textbf{Proposition}: Prove or disprove: If $[a] \varodot [b] = [a] \varodot [c]$ and $[a] \neq [0]$ in $\Z_n$, then $[b] = [c]$.
+\end{problem}
+
+\begin{problem}{2} Section 2.3 \#1,2 \\
+
+\noindent
+\textbf{Proposition}: Find all the units and zero divisors in (Do both together): \\
+
+\begin{enumerate} [label=(\alph*)]
+\item $\Z_7$ Hello 
+\item $\Z_8$ Hello 
+\item $\Z_9$ Hello 
+\item $\Z_10$
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}{3} Section 2.3 \#8 \\
+
+\noindent
+\textbf{Proposition}: 
+\begin{enumerate}[label=(\alph*)]
+\item Give three examples of equations of the form $ax=b$ in $\Z_12$ that have no nonzero solutions.
+\item For each of the equations in part $(a)$, does the equation $ax=0$ have a nonzero solution? 
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4} Section 2.3 \#11 \\
+
+\noindent
+\textbf{Proposition}: Without using Exercises $13$ and $14$, prove: If $a,b \in \Z_n$ and $a$ is a unit, then the equation $ax=b$ has a unique solution in $\Z_n$. [\textit{Note:} You must find a solution for the equation \textit{and} show that this solution is the only one.]
+\end{problem}
+
+\begin{problem}{5} Section 2.3 \#13 \\
+
+\noindent
+\textbf{Proposition}: Let $a,b,n$ be integers with $n>1$. Let $d=(a,n)$ and assume $d|b$. Prove that the equation $[a]x=[b]$ has a solution in $Z_n$ as follows 
+\begin{enumerate}[label=(\alph*)]
+\item Explain why there are integers $u,v,a_1,b_1,n_1$ such that $au_nv=d$,$a=da_1$, $b=db_1$, and $n=dn_1$.
+\item Show that each of 
+\begin{center}
+$[ub_1]$,$[ub_1+n_1]$,$[ub_1+2n_1]$,$[ub_1+3n_1]$,$\cdot \cdot \cdot$,$[ub_1+(d-1)n_1]$
+\end{center}
+is a solution of $[a]x=[b]$. \\
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{6} Section 2.3 \#14 \\
+
+\noindent
+\textbf{Proposition}: Let $a,b,n$ be integers with $n>1$. Let $d=(a,n)$ and assume $d|b$. Prove that the equation $[a]x=[b]$ has $d$ unique solutions in $Z_n$ as follows 
+\begin{enumerate}[label=(\alph*)]
+\item Show that the solutions listed in Exercise $13(b)$ are all distinct. [\textit{Hint}: $[r] = [s]$ if and only if $n|(r-s)$.]
+\item If $x=[r]$ is any solution of $[a]x=[b]$, show that $[r]=[ub_1+kn_1]$ for some integer $k$ with $0 \leq k \leq d - 1$. [\textit{Hint}: $[ar]-[aub_1]=[0]$ (Why?), so that $n|(a(r-ub_1))$. Show that $n_1|(a_1(r-ub_1))$ and use Theorem $1.4$ to show that $n_1|(r-ub_1)$.]
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7} Section 2.3 \#17 \\
+
+\noindent
+\textbf{Proposition}: Prove that the product of two units in $\Z_n$ is also a unit.
+\end{problem}
+\end{document} 

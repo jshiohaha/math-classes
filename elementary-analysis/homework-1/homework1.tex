@@ -1,0 +1,79 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\begin{flushleft}
+Suppose that $A, B, C$ are sets satisfying \\
+\begin{center}
+(1) $A \cap B = A \cap C$  and (2) $A \cup B = A \cup C$
+\end{center}
+Prove that $B=C$
+\end{flushleft}
+
+\begin{flushleft}
+\textbf{PROOF}
+\end{flushleft}
+
+% STATEMENT 1
+\begin{flushleft}
+ (1)\:\: For every $x \in A \cap B$, $x \in A$ and $x \in B$ simultaneously. Since \\
+\qquad  $A \cap B = A \cap C$, every $x \in A$ must also be contained in $C$ simultaneously.\\
+\qquad  There is no such $x$ where $x \in A \cap B$ and $x \not \in A \cap C$ and vice versa.\\ 
+\qquad  By rule of intersection, no such $x$ exists such that $x \in B$ and $x \not \in C$ and \\
+\qquad vice versa. \\ 
+\end{flushleft}
+
+% STATEMENT 2
+\begin{flushleft}
+ (2)\:\: Assume for every $x \in A \cup B$ that $x \not \in A$. $x$ must therefore explicitly be \\ \qquad contained in $B$. Since $A \cup B = A \cup C$ and $x \not \in A$, x must also explicitly be \\\qquad contained in $C$. Therefore no such $x$ exists that $x \in B$ and $x \not \in C$ and vice \\ \qquad versa. \\
+\end{flushleft}
+
+% BEGINNING OF CONCLUSION
+\begin{flushleft}
+\textbf{CONSLUSION}\\
+\end{flushleft}
+
+\begin{flushleft}
+\qquad Statement (1) showed that every $x \in A \cap B$ and $x \in A \cap C$ must mean \\ 
+\qquad that every $x \in B$ and $x \in C$ at the same time. Additionally, statement (2) \\
+\qquad showed that every $x \in A \cup B$ and $x \in A \cup C$ simultaneously. By \\
+\qquad considering both statements to be true, there can not exist an $x \in B$ \\
+\qquad where $x \not \in C$. Hence, the definition of subsets and the equality of sets $B$ \\
+\qquad and $C$.
+\end{flushleft}
+
+\begin{flushleft}
+Show that assuming only one of the conditions in the part I is not sufficient to prove $B = C$ \\
+\end{flushleft}
+
+\begin{flushleft}
+ (1)\:\: Only assuming that $A \cap B = A \cap C$ is not sufficient because there could \\
+ \qquad exist an $x \in B$ and  $x \not \in C$ because $A \cap B$ and $A \cap C$ are not said to be \\ \qquad equal.
+\end{flushleft}
+
+\vspace{2cm}
+
+\begin{flushleft}
+ (2)\:\: Only assuming that $A \cup B = A \cup C$ is not sufficient because there could \\ 
+ \qquad exist an $x \in A \cap B$ and  $x \not \in A \cap C$. $A \cup B$ and $A \cup C$ do not elimate this \\ 
+ \qquad possibility independently.
+\end{flushleft}
+%----------------------------------------------------------------------------------------
+
+\end{document}Jacobs-MacBook-Pro:code_snippet jacobshiohira$ 

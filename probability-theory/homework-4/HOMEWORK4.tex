@@ -1,0 +1,435 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+ 
+\begin{document}
+\title{Math 487 Homework 4}
+\author{Jacob Shiohira}
+\maketitle
+
+\noindent
+\textbf{Ch5.2 Q1} Choose a number U from the unit interval [0, 1] with uniform distribution. Find the cumulative distribution and density for the random variables
+
+\begin{enumerate}[label=(\alph*)]
+\item $Y = U + 2$.
+
+\noindent
+Since $U$ is uniformly distributed on the unit interval [0, 1], we can redefine the limits in terms of $Y$ where $U = Y - 2$, 
+
+\begin{center}
+$0 \leq Y - 2 \leq 1$, \\
+$2 \leq Y \leq 3$.
+\end{center}
+
+\noindent
+We can now find the probability density function, $f_U(x)$ by  $\frac{du}{dy} Y - 2$. We then see that $f_U = 1$. The cumulative distribution function $F_U(x)$ is then found by
+
+\begin{align*}
+\int f_U \text{ } dx & = \int 1 \text{ } dx  \\
+& = x + c.
+\end{align*}
+
+\noindent
+To ensure that $F_U(x)$ is in the unit interval [0, 1], we set $c = -2$ and thus see that $F_U(x) = x - 2$.
+
+\item $Y = U^3$.
+
+\noindent
+Since $U$ is uniformly distributed on the unit interval [0, 1], we can redefine the limits in terms of $Y$ where $U = \sqrt[3]{Y}$, 
+
+\begin{center}
+$0 \leq \sqrt[3]{Y} \leq 1$, \\
+$0 \leq Y \leq 1$.
+\end{center}
+
+\noindent
+We can now find the probability density function, $f_U(x)$ by  $\frac{du}{dy} \sqrt[3]{Y}$. We then see that $f_U = \frac{1}{3} y^{\frac{-2}{3}}$. The cumulative distribution function $F_U(x)$ is then found by
+
+\begin{align*}
+\int f_U \text{ } dx & = \int \frac{1}{3} y^{\frac{-2}{3}} \text{ } dx  \\
+& = x^{\frac{1}{3}} + c.
+\end{align*}
+
+\noindent
+To ensure that $F_U(x)$ is in the unit interval [0, 1], we set $c = 0$ and thus see that $F_U(x) =  x^{\frac{1}{3}}$.
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+\textbf{Ch5.2 Q2} Choose a number U from the interval [0, 1] with uniform distribution. Find the cumulative distribution and density for the random variables
+
+\begin{enumerate}[label=(\alph*)]
+\item $Y = 1/(U + 1)$.
+
+\noindent
+Since $U$ is uniformly distributed on the unit interval [0, 1], we can redefine the limits in terms of $Y$ where $U = \frac{1}{Y} - 1$, 
+
+\begin{center}
+$0 \leq \frac{1}{Y} - 1 \leq 1$, \\
+$1 \leq  \frac{1}{Y} \leq 2$, \\
+$1 \leq Y \leq \frac{1}{2}$. \\
+\end{center}
+
+\noindent
+We can now find the probability density function, $f_U(x)$ by  $\frac{du}{dy} \frac{1}{Y} - 1$. We then see that $f_U = - \frac{1}{y^2}$. The cumulative distribution function $F_U(x)$ is then found by
+
+\begin{align*}
+\int f_U \text{ } dx & = \int_{\frac{1}{2}}^{1} - \frac{1}{y^2} \text{ } dx  \\
+& = \Big [ \frac{1}{y} + c \Big ]_{\frac{1}{2}}^{1} \\
+& = 1.
+\end{align*}
+
+\noindent
+To ensure that $F_U(x)$ is in the unit interval [0, 1], we set $c = 2$ and thus see that $F_U(x) =  2 - \frac{1}{y^2}$.
+
+\item $Y = \text{log}(U + 1)$.
+
+\noindent
+Since $U$ is uniformly distributed on the unit interval [0, 1], we can redefine the limits in terms of $Y$ where $U = e^{Y} - 1$, 
+
+\begin{center}
+$0 \leq e^{Y} - 1 \leq 1$, \\
+$1 \leq  e^{Y}  \leq 2$, \\
+$0 \leq Y \leq \text{ln}(2)$. \\
+\end{center}
+
+\noindent
+We can now find the probability density function, $f_U(x)$ by  $\frac{du}{dy} e^{Y} - 1$. We then see that $f_U = e^{Y}$. The cumulative distribution function $F_U(x)$ is then found by
+
+\begin{align*}
+\int f_U \text{ } dx & = \int e^{Y} \text{ } dx,  \\
+& = e^{Y} + c \text{ } dx.
+\end{align*}
+
+\noindent
+To ensure that $F_U(x)$ is in the unit interval [0, 1], we set $c = -1$ and thus see that $F_U(x) = e^{Y} - 1$.
+
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+\textbf{Ch5.2 Q10} Let $U, V$ be random numbers chosen independently from the interval [$0, 1$]. Find the cumulative distribution and density for the random variables
+
+\begin{enumerate}[label=(\alph*)]
+\item $Y = \text{max}(U, V)$.
+
+\noindent
+Clearly, for the CDF of $X$, we know $F_X(x) = \mathbb{P}(X \leq x)$. Additionally, since $U$ and $V$ are independent and uniformly distributed, we know that $F_U(u) = \mathbb{P}(U \leq x)$ and $F_V(v) = \mathbb{P}(V \leq x)$. So, 
+
+\begin{equation*}
+F_X(x) = \mathbb{P}(X \leq x) = \mathbb{P}(U \leq x, V \leq x) = \mathbb{P}(U \leq x) \cdot \mathbb{P}(V \leq x) = x^2.
+\end{equation*}
+
+\noindent
+Thus, considering the [0,1] range for normally distributed random variables, we can define the cumulative distribution functions and probability density functions as follows,
+
+\[ F_X(x) =  \begin{cases} 
+	  0 & \text{if } x < 0, \\
+      x^2  & \text{if } 0 \leq x \leq 1, \\
+      1 & \text{if } x \geq 1.
+      \end{cases} \]
+
+\noindent
+Similarly, the probability density functions is defined as follows after differentiating the cumulative distribution function,
+
+\[ f_X(x) =  \begin{cases} 
+      2x  & \text{if } 0 \leq x \leq 1, \\
+      0 & \text{elsewhere}.
+      \end{cases} \]
+
+\item $Y = \text{min}(U, V)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\noindent
+Clearly, for the CDF of $Y$, we know $F_Y(y) = \mathbb{P}(Y \leq y)$. Additionally, since $U$ and $V$ are independent and uniformly distributed, we know that $F_U(u) = 1- \mathbb{P}(U \leq y)$ and $F_V(v) = 1- \mathbb{P}(V \leq y)$. So, 
+
+\begin{equation*}
+F_Y(y) = 1 - \mathbb{P}(XY\leq y) = 1- \mathbb{P}(U \leq y, V \leq y) = 1 - \mathbb{P}(U \leq y) \cdot \mathbb{P}(V \leq y) = 1 - (1-y)^2.
+\end{equation*}
+
+\noindent
+Thus, considering the [0,1] range for normally distributed random variables, we can define the cumulative distribution functions and probability density functions as follows,
+
+\[ F_X(x) =  \begin{cases} 
+	  0 & \text{if } x < 0, \\
+      1 - (1-y)^2 & \text{if } 0 \leq x \leq 1, \\
+      1 & \text{if } x \geq 1.
+      \end{cases} \]
+
+\noindent
+Similarly, the probability density functions is defined as follows after differentiating the cumulative distribution function,
+
+\[ f_X(x) =  \begin{cases} 
+      2(1-y)  & \text{if } 0 \leq x \leq 1, \\
+      0 & \text{elsewhere}.
+      \end{cases} \]
+
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\vspace*{1cm}
+\noindent
+\textbf{Ch5.2 Q16} Let $X$ be a random variable with density function
+
+\[ f_X(x) =  \begin{cases} 
+	  cx(1-x) & \text{if } 0 < x < 1, \\
+      0 & \text{otherwise}.
+      \end{cases} \]
+      
+\begin{enumerate}[label=(\alph*)]
+\item What is the value of $c$?
+
+\noindent
+To find $c$, we will integrate the $f_X(x) $ function with respect to $x$ and evaluate the integral from $0$ to $1$,
+
+\begin{align*}
+\int c x(1-x) \text{ } dx &= c \int  x-x^2 \text{ } dx \\
+&= c \Bigg [ \frac{x^2}{2}-\frac{x^3}{3} \Bigg ]_{0}^{1} \\
+&=1
+\end{align*} 
+
+\noindent
+Thus, we see that $c = 6$.
+
+\item What is the cumulative distribution function $F_X$ for $X$?
+
+\noindent
+Based on the results from the previous part, we know $F_X = 6 \big ( \frac{x^2}{2}-\frac{x^3}{3} \big ) = 3x^2-2x^3$.
+
+\item What is the probability that $X < 1/4$?
+
+\noindent
+To find $\mathbb{P}(X < 1/4)$, we can just plug $1/4$ into our cumulative distribution function, $F_X(1/4) = 3(1/4)^2-2(1/4)^3 = .15625$.
+
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\vspace*{1cm}
+\noindent
+\textbf{Ch5.2 Q17} Let $X$ be a random variable with cumulative distribution function
+
+\[ F(x) =  \begin{cases} 
+	  0 & \text{if } x < 0, \\
+      \text{sin}^2(\pi x / 2) & \text{if } 0 \leq x \leq 1, \\
+      1 & \text{if } 1 < x.
+      \end{cases} \]
+      
+\begin{enumerate}[label=(\alph*)]
+\item What is the density function $f_X$ for $X$?
+
+\noindent
+The density function $f_X$ can be calculated by 
+
+\begin{align*}
+\frac{d}{dy} F_X(x)  = f_X(x) &= \begin{cases} 
+      \pi \text{sin}(\pi x / 2) \text{cos}(\pi x / 2) & \text{if } 0 \leq x \leq 1, \\
+      0 & \text{elsewhere}.
+      \end{cases} \\
+      &= \begin{cases} 
+      \frac{\pi}{2} \text{sin}(\pi x) & \text{if } 0 \leq x \leq 1, \\
+      0 & \text{elsewhere}.
+      \end{cases} \\
+\end{align*}
+
+
+\item What is the probability that $X < 1/4$?
+\noindent
+To find $\mathbb{P}(X < 1/4)$, we can just plug $1/4$ into our cumulative distribution function, $F_X(1/4) = \text{sin}^2(\pi / 8) = .146447$.
+
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+\textbf{Ch5.2 Q18} Let $X$ be a random variable with cumulative distribution function $F_X$, and let $Y = X + b$, $Z = aX$, and $W = aX + b$, where $a$ and $b$ are any constants. Find the cumulative distribution functions $F_Y$, $F_Z$, and $F_W$. \textit{Hint}: The cases $a > 0$, $a = 0$, and $a < 0$ require different arguments.
+
+\vspace{.5cm}
+\noindent
+By the properties of cumulative distribution functions, we know that they are non-decreasing. That leads us to the following three cases: $a > 0$, $a = 0$, and $a < 0$. We can also define $F_Y(y)$, $F_Z(z)$, and $F_W(w)$ in terms of $F_X(x)$,
+
+\begin{enumerate}[label=(\roman*)]
+\item $F_Y(y)$
+
+\noindent
+\begin{align*}
+F_Y(y) &= \mathbb{P}(X + b \leq y)  \\
+&= F_X(y - b) \\
+\end{align*}
+
+\noindent
+Since there are no restrictions on $a$ here, $F_Y(y) = F_X(y - b)$.
+
+\item $F_Z(z)$
+
+\noindent
+\begin{align*}
+F_Z(z) &= \mathbb{P}(aX \leq z)  \\
+&= F_X \Big (\frac{z}{a} \Big ) \\
+\end{align*} 
+
+\noindent
+So, we see the form of $F_Z(z)$ but we need to consider the cases when $a > 0$, $a = 0$, and $a < 0$. Furthermore, we know that $F_X(x)$ is strictly increasing when $a > 0$ and is strictly decreasing when $a < 0$.
+
+\[ F_Z(z)=  \begin{cases} 
+	  F_X \Big (\frac{z}{a} \Big ) & \text{if } a > 0 \\
+      1 - F_X \Big (\frac{z}{a} \Big ) & \text{if } a < 0, \\
+      1 & \text{if } a = 0.
+      \end{cases} \]
+
+\item $F_W(w)$
+
+\noindent
+\begin{align*}
+F_W(w) &= \mathbb{P}(aX + b)  \\
+&= F_X \Big ( \frac{x+b}{a} \Big ) \\
+\end{align*} 
+
+
+\noindent
+So, we see the form of $F_W(w)$ but we need to consider the cases when $a > 0$, $a = 0$, and $a < 0$. Furthermore, we know that $F_X(x)$ is strictly increasing when $a > 0$ and is strictly decreasing when $a < 0$.
+
+\[ F_W(w) = \begin{cases} 
+	  F_X \Big ( \frac{x+b}{a} \Big ) & \text{if } a > 0 \\
+      1 - F_X \Big ( \frac{x+b}{a} \Big ) & \text{if } a < 0, \\
+      
+      
+      \begin{cases} 
+      1 & \text{if } w \geq b, \\
+      0 & \text{elsewhere}.
+      \end{cases}
+      
+       & \text{if } a = 0.
+      \end{cases} \]
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+\textbf{Ch5.2 Q19} Let $X$ be a random variable with density function $f_X$, and let $Y = X + b$, $Z = aX$, and $W = aX + b$, where $a \neq 0$. Find the density functions $f_Y$ , $f_Z$, and $f_W$. (See Exercise $18$.)
+
+\begin{enumerate}[label=(\roman*)]
+\item $f_Y(y)$
+
+Since $Y$ is $X$ with a positive shift by $b$ without any influence of the value of $a$, we know the density of $Y$ at $y$ is that of $X$ at $x-b$,
+
+\begin{equation*}
+f_Y(y) = f_X(y-b).
+\end{equation*}
+
+\item $f_Z(z)$
+
+Since $Z$ is $X$ with scaled by $a$, we know the density of $Z$ at $z$ is $\lvert \frac{1}{a} \rvert$ that of $X$ at $\frac{z}{a}$,
+
+\begin{equation*}
+f_Z(z) =  \begin{cases} 
+	  \frac{1}{\lvert a \rvert}  f_X \Big (\frac{z}{a} \Big ) & \text{if } a \neq 0, \\
+      0 & \text{if } a = 0. \\
+      \end{cases}
+\end{equation*}
+
+\item $f_W(w)$
+
+Since $W$ is $X$ with scaled by $a$ and shifted by $b$, we know the density of $Z$ at $z$ is $\lvert \frac{1}{a} \rvert$ that of $X$ at $aX + b$,
+
+\begin{equation*}
+f_W(w) =  \begin{cases} 
+	  \frac{1}{\lvert a \rvert}  f_X \Big ( \frac{w-b}{a} \Big ) & \text{if } a \neq 0, \\
+      0 & \text{if } a = 0 \text{ and } w \neq 0. \\
+      \end{cases}
+\end{equation*}
+\end{enumerate}
+
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+\textbf{Ch5.2 Q23} Let $X$ be a random variable with density function $f_X$. The mean of $X$ is the value $\mu = \int x f_x(x) dx$. Then $\mu$ gives an average value for $X$ (see Section $6.3$). Find $\mu$ if $X$ is distributed uniformly, normally, or exponentially, as in Exercise $22$.
+
+\vspace*{.5cm}
+\noindent
+Based on Exercise $22$, we will find the value of $\mu = \int x f_x(x) dx$ with the following distributions:
+
+\begin{enumerate}[label=(\roman*)]
+\item uniformly distributed over the interval [a, b].
+
+\begin{align*}
+\mu = \int x f_x(x) dx &= \int_{a}^{b} x \frac{1}{b-a} dx \\
+&= \frac{1}{b-a} \Big [ \frac{x^2}{2} \Big ]_{a}^{b} \\
+&= \frac{1}{b-a} \Big [ \frac{b^2-a^2}{2} \Big ] \\
+&= \frac{b + a }{2}  \\
+\end{align*}
+
+\item normally distributed with parameters $\mu$ and $\rho$.
+
+% TODO....
+\begin{align*}
+\mu = \int x f_x(x) dx &= \int_{- \infty}^{\infty} x \frac{e^{\frac{- (x- \mu )^2}{(2 \sigma)^2}}}{\sigma \sqrt{2 \pi}}  dx \\
+&= \mu  \\
+\end{align*}
+
+\item exponentially distributed with parameter $\lambda$.
+
+\begin{align*}
+\mu = \int x f_x(x) dx &= \lambda \int_{0}^{\infty} x e^{- \lambda x}  dx \\
+&= \lambda \Big [ \big ( \frac{-x}{\lambda} - \frac{1}{\lambda ^2} \big ) e^{- \lambda x} \Big ]_{0}^{\infty} \\
+&= \lambda \Big [  \frac{1}{\lambda ^2 }\Big ] \\
+&= \frac{1}{\lambda}  \\
+\end{align*}
+
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+
+\end{document} 

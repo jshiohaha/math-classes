@@ -1,0 +1,373 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ \usepackage{gensymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\nspace}{\vspace*{.5cm}}
+\newcommand{\nline}{\nspace \noindent}
+
+\newcommand{\expected}[1]{\text{E}(#1)}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+ 
+ % 7.2 3.b, 13, 14, 21
+ 
+\begin{document}
+\title{Math 487 Homework 6}
+\author{Jacob Shiohira}
+\maketitle
+
+\subsection*{Section 7.2}
+\noindent
+\textbf{Ch 7.2 Q3} Suppose again that $Z = X + Y$ . Find $f_Z$ if
+
+\begin{enumerate}[label=(\alph*)]
+\item 
+
+\[ f_X(x) = f_Y(x) = \begin{cases} 
+      \frac{x}{2} & \text{ if } 0 < x < 2, \\
+      0 & \text{ otherwise}.
+      \end{cases} \]
+
+\noindent
+Given $Z = X + Y$, $0 < X < 2$, and $0 < Y < 2$, we know that $f_Z$ will take on the following,
+
+\begin{equation*}
+\int_{- \infty}^{\infty} f_X(z-y) f_Y(y) dy \enspace \text{ or } \enspace \int_{- \infty}^{\infty} f_Y(z-x) f_X(x) dx.
+\end{equation*}
+
+\noindent
+We will use the former. From the restrictions on $X$ and $Y$, we can derive the following, $y < z < 2+y$ and $z-2 < y < z$. These will help us calculate our bounds of integration and ranges of the $Z$ random variable. The $Z$ ranges over which $f_Z$ will have a value is $0 < z < 2$ and $2 < z < 4$. So, we will go ahead and calculate those,
+
+\begin{align*}
+f_Z(x) &= \int_{0}^{z} \frac{z-2}{2} - \frac{y}{2} \text{ } dy = \int_{0}^{z} \frac{zy}{4} - \frac{y^2}{4} \text{ } dy = \Bigg [ \frac{zy^2}{8} - \frac{y^3}{12} \Bigg ]_{0}^{z} = \frac{z^3}{8} - \frac{z^3}{12} = \frac{z^3}{24},
+\end{align*}
+
+\begin{align*}
+f_Z(x) &= \int_{z-2}^{2} \frac{z-2}{2} - \frac{y}{2} \text{ } dy \\
+&= \int_{z-2}^{2} \frac{zy}{4} - \frac{y^2}{4} \text{ } dy \\
+&= \Bigg [ \frac{zy^2}{8} - \frac{y^3}{12} \Bigg ]_{z-2}^{2} \\
+&= \frac{4}{8}z - \frac{8}{12} - \Big [ \frac{z(z-2)^2}{8} - \frac{(z-2)^3}{12} \Big ] \\
+&= \frac{4}{8}z - \frac{8}{12} - \Big [ \frac{z^3 - 4z^2 + 4z}{8} - \frac{z^3-6z^2+12z-8}{12} \Big ] \\
+&= \frac{4}{8}z - \frac{8}{12} - \frac{3z^3 - 12z^2 + 12z - 2z^3 +12z^2 - 24z + 16}{24} \\
+&= z - \frac{z^3}{24} - \frac{4}{3}.
+\end{align*}
+
+\noindent
+Thus, 
+
+\[ f_Z(x) = \begin{cases} 
+      \frac{x^3}{24} & \text{ if } 0 \leq x \leq 2, \\
+      x - \frac{x^3}{24} - \frac{4}{3} & \text{ if } 2 \leq z \leq 4.
+      \end{cases} \]
+
+\item 
+\[ f_X(x) = f_Y(x) = \begin{cases} 
+     \frac{1}{2}(x-3) & \text{ if } 3 < x < 5, \\
+      0 & \text{ otherwise}.
+      \end{cases} \]
+
+% TODO: 3.b
+Given $Z = X + Y$, $3 < X, Y < 5$, we know that $f_Z$ will take on the following,
+
+\begin{equation*}
+\int_{- \infty}^{\infty} f_X(z-y) f_Y(y) dy \enspace \text{ or } \enspace \int_{- \infty}^{\infty} f_Y(z-x) f_X(x) dx.
+\end{equation*}
+
+\noindent
+We will use the former. From the restrictions on $X$ and $Y$, we can derive the following, $3 + y < z < 5+y$ and $z-5 < y < z-3$. These will help us calculate our bounds of integration and ranges of the $Z$ random variable. The $Z$ ranges over which $f_Z$ will have a value is $6 < z < 8$ and $6 < z < 8$. So, we will go ahead and calculate those,
+
+\begin{align*}
+f_Z(x) &= \int_{3}^{z-3} \dfrac{y^2+z\left(3-y\right)-9}{4} \text{ } dy \\
+&= \frac{1}{4} \Bigg [ \dfrac{y^3}{3}-\dfrac{zy^2}{2}+\left(3z - 9 \right)y \Bigg ]_{3}^{z-3} \\
+&= - \frac{z^3-18z^2+81z-108}{24}-\frac{9z-36}{8} \\
+&= \dfrac{z^3-18z^2+108z-216}{24}
+\end{align*}
+
+\begin{align*}
+f_Z(x) &= \int_{z-5}^{5} \dfrac{y^2+z\left(3-y\right)-9}{4} \text{ } dy \\
+&= \frac{1}{4} \Bigg [ \dfrac{y^3}{3}-\dfrac{zy^2}{2}+\left(3z - 9 \right)y \Bigg ]_{z-5}^{5} \\
+&= \frac{z^3-18z^2+69z-20}{24}+\frac{15z-20}{24} \\
+&= \dfrac{z^3-18z^2+84z-40}{24}
+\end{align*}
+
+\noindent
+Thus, 
+
+\[ f_Z(x) = \begin{cases} 
+      \dfrac{z^3-18z^2+108z-216}{24} & \text{ if } 6 \leq x \leq 8, \\
+      \dfrac{z^3-18z^2+84z-40}{24} & \text{ if } 8 \leq x \leq 10.
+      \end{cases} \]
+
+\item 
+\[ f_X(x) = \begin{cases} 
+      \frac{1}{2} & \text{ if } 0 < x < 2, \\
+      0 & \text{ otherwise}.
+      \end{cases} \]
+      
+ \[ f_Y(x) = \begin{cases} 
+      \frac{x}{2} & \text{ if } 0 < x < 2, \\
+      0 & \text{ otherwise}.
+      \end{cases} \]
+      
+\noindent
+Given $Z = X + Y$, $0 < X < 2$, and $0 < Y < 2$, we know that $f_Z$ will take on the following,
+
+\begin{equation*}
+\int_{- \infty}^{\infty} f_X(z-y) f_Y(y) dy \enspace \text{ or } \enspace \int_{- \infty}^{\infty} f_Y(z-x) f_X(x) dx.
+\end{equation*}
+
+\noindent
+We will use the former. From the restrictions on $X$ and $Y$, we can derive the following, $y < z < 2+y$ and $z-2 < y < z$. These will help us calculate our bounds of integration and ranges of the $Z$ random variable. The $Z$ ranges over which $f_Z$ will have a value is $0 < z < 2$ and $2 < z < 4$. So, we will go ahead and calculate those,
+
+\begin{align*}
+f_Z(x) &= \int_{0}^{z} \frac{y}{4} \text{ } dy = \Bigg [ \frac{y^2}{8} \Bigg ]_{0}^{z} = \frac{z^2}{8},
+\end{align*}
+
+\begin{align*}
+f_Z(x) &= \int_{z-2}^{2} \frac{y}{4} \text{ } dy = \Bigg [ \frac{y^2}{8} \Bigg ]_{z-2}^{2} = \frac{1}{2} - \frac{(z-2)^2}{8}.
+\end{align*}
+
+\noindent
+Thus, 
+
+\[ f_Z(x) = \begin{cases} 
+      \frac{z^2}{8} & \text{ if } 0 \leq x \leq 2, \\
+      \frac{1}{2} - \frac{(z-2)^2}{8} & \text{ if } 2 \leq z \leq 4.
+      \end{cases} \]
+
+% \item What can you say about the set $E = { z : f_Z(z) > 0 }$ in each case?
+\end{enumerate}
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q9} Assume that the service time for a customer at a bank is exponentially distributed with mean service time $2$ minutes. Let $X$ be the total service time for $10$ customers. Estimate the probability that $X > 22$ minutes.
+
+\vspace*{.5cm}
+\noindent
+We can view $X$ as the sum of $10$ independent, exponentially distributed random variables with mean service time of $2$ minutes. Let $X_i$ with $i = 0, \ldots, 10$ be these independent random variables. Then,
+
+\begin{equation*}
+X = X_1 + X_2 + \cdots + X_{10}.
+\end{equation*}
+
+\noindent
+Since all the $X_i$ are exponentially distributed with mean $\frac{1}{\lambda}$, then 
+
+\begin{equation*}
+X = \frac{\lambda e^{- \lambda x} (\lambda x)^{n-1}}{(n-1)!}.
+\end{equation*}
+
+\noindent
+Thus,
+
+\begin{equation*}
+\mathbb{P}(X > 22) = 1 - \int_{0}^{22} \frac{.5 e^{- .5 x} (.5 x)^{9}}{9!} dx = .341.
+\end{equation*}
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q10} Let $X_1, X_2, \ldots , X_n$ be $n$ independent random variables each of which has an exponential density with mean $\mu$. Let $M$ be the \textit{minimum value} of the $X_j$ . Show that the density for $M$ is exponential with mean $\mu / n$. Hint: Use cumulative distribution functions.
+
+\vspace*{.5cm}
+\noindent
+Since $X_1, X_2, \ldots , X_n$ are $n$ independent random variables with exponential density and mean $\mu$, the probability distribution of $X_j$ for $j = 1, 2, \ldots, n$ is
+
+\begin{equation*}
+f(x) = \frac{1}{\mu} e^{-\frac{x}{\mu}}.
+\end{equation*}
+
+\noindent
+It follows that the cumulative distribution function can be calculated from the integral of $f(x)$,
+
+\begin{equation*}
+F(x) = \int \frac{1}{\mu} e^{-\frac{x}{\mu}} = e^{-\frac{x}{\mu}} + C.
+\end{equation*}
+
+\noindent
+We can plug in $F(0) = 0$ to find that $C = -1$ and $F(x) = 1 - e^{-\frac{x}{\mu}}$. Then, if $M$  is the minimum value of $X_j$ for $j = 1, 2, \ldots, n$, we can find $F_M(x)$, 
+
+ \begin{equation*}
+P( \text{min}(X_1, \ldots, X_n) > M ) = \big [ P(X_1 > x) \big ]^n = \big [ 1 - F(x) \big ]^n =  \big [ 1 - (1 - e^{- x / \mu }) \big ]^n = 1 - e^{ - \frac{n}{\mu} x }.
+\end{equation*}
+
+\noindent
+Then, we can find $f_M(X)$ by differentiating $F_M(x)$ to get 
+
+\begin{equation*}
+f_M(x) = \frac{n}{\mu} e^{- \frac{n}{\mu} x }.
+\end{equation*}
+
+\noindent
+This then satisfies that the minimum value of $X_j$ for $j = 1, 2, \ldots, n$ has exponential distribution with mean $n / \mu$.
+
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q11} A company buys $100$ light bulbs, each of which has an exponential lifetime of $1000$ hours. What is the expected time for the first of these bulbs to burn out? (See Exercise $10$.)
+
+\vspace*{.5cm}
+\noindent
+Since we are looking for the first bulb to burn out, we can refer to the result of the last problem. Let $X_1$ denote the first bulb to burn out. Then, E$(X_1) = \mu / n = 1000 / 100 = 10$ hours. 
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q13} Particles are subject to collisions that cause them to split into two parts with each part a fraction of the parent. Suppose that this fraction is uniformly distributed between 0 and 1. Following a single particle through several splittings we obtain a fraction of the original particle $Z_n = X_1 \cdot X_2 \cdot \ldots \cdot X_n$ where each $X_j$ is uniformly distributed between $0$ and $1$. Show that the density for the random variable $Z_n$ is
+
+\begin{equation*}
+f_n(z) = \frac{1}{(n-1)!} (- \text{log} z)^{n-1}.
+\end{equation*}
+
+\noindent
+Hint: Show that $Y_k = - \text{log} X_k$ is exponentially distributed. Use this to find the density function for $S_n = Y_1 + Y_2+ \cdots + Y_n$, and from this the cumulative distribution and density of $Z_n = e^{−S_n}$.
+
+\vspace*{.5cm}
+\noindent
+Since $Y_k = - \text{log} X_k$, we see that 
+
+\begin{equation*}
+P(Y_k \leq y_k) = P(- \text{log} X_k \leq y_k) = P(X_k \geq e^{- y_k}) = 1 - P(X_k \leq e^{- y_k}) = 1 - e^{- y_k}.
+\end{equation*}
+
+\noindent
+Thus, $Y_k$ is exponentially distributed. Then, it follows that $Y_k \sim \text{exp}(1)$ for all $k = 1, 2, \ldots, n$. So, $S_n$ is distributed according to the gamma function,
+
+\begin{equation*}
+f_{S_n}(x) = \frac{e^{- x } x^{n-1}}{\left(n-1\right)!}.
+\end{equation*} 
+
+\noindent
+Then, per the hint, $Z_n = e^{−S_n}$ can be used to yield the cumulative distribution of $f_A$. So, we will start with 
+
+\begin{equation*}
+F_{Z_n}(z) = P(Z_n \leq z) = P(e^{- S_n} \leq z) = P(S_n \geq - \text{ln} z) = 1 - P(Z_n \leq - \text{ln} z) = 1 - F_s(- \text{ln} z).
+\end{equation*}
+
+\noindent
+By the properties of probability density functions, we can differentiate $F_{Z_n}(z)$ with respect to $z$ to get,
+
+\begin{equation*}
+f_{Z_n}(z) = \frac{d}{dz} 1 - F_s(- \text{ln} z) = \frac{(- \text{ln} z)^{n-1}}{ \left(n-1\right)!}.
+\end{equation*}
+
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q14} Assume that $X_1$ and $X_2$ are independent random variables, each having an exponential density with parameter $\lambda$. Show that $Z = X_1 - X_2$ has density
+
+\begin{equation*}
+f_Z(z) = \frac{1}{2} \lambda e^{- \lambda \lvert z \rvert}.
+\end{equation*}
+
+\noindent
+We can think of $Z = X_1 - X_2$ as $Z = X_1 + (-X_2)$. Then, it is easily seen that $X_1$ and $X_2$ have probability density functions
+
+\begin{equation*}
+f_{X_1}(x) = \begin{cases}
+             0  & \text{ for } x < 0, \\
+             \lambda e^{- \lambda x}  & \text{ for } x > 0.
+       \end{cases} \quad
+f_{X_2}(x) = \begin{cases}
+		      \lambda e^{- \lambda x}  & \text{ for } x < 0, \\
+             0  & \text{ for } x > 0.
+       \end{cases}
+\end{equation*}
+
+\noindent
+The convolution of $Z = X_1 + (-X_2)$ is therefore
+
+\begin{equation*}
+f_Z(z) = (f_1 \cdot f_2)(z) = \int_{- \infty}^{\infty} f_1(z - x)f_2(x) \text{ } dx.
+\end{equation*}
+
+\noindent
+As a result of the ranges of $X_1$ and $X_2$, the analysis on $Z$ can be broken down into the two cases: $z > 0$ and $z < 0$,
+
+\begin{align*}
+f_Z(z) &= \int_{- \infty}^{z} f_1(z - x)f_2(x) \text{ } dx \\
+&= \lambda^2 e^{- \lambda z} \int_{- \infty}^{z} e^{2 \lambda x} \text{ } dx  \\
+&= \lambda^2 e^{- \lambda z} \frac{e^{2 \lambda x}}{2 \lambda}  \text{ } dx  \\
+&= \frac{\lambda}{2} e^{- \lambda z} \\
+\end{align*}
+
+\begin{align*}
+f_Z(z) &= \int_{- \infty}^{0} f_1(z - x)f_2(x) \text{ } dx \\
+&= \lambda^2 e^{- \lambda z} \int_{- \infty}^{0} e^{2 \lambda x} \text{ } dx  \\
+&= \lambda^2 e^{- \lambda z} \frac{1}{2 \lambda}  \\
+&= \frac{\lambda}{2} e^{- \lambda z}  \\
+\end{align*}
+
+\noindent
+Since $f_Z(z)$ has the same definition when $z < 0$ and $z > 0$, we can 
+
+\begin{equation*}
+f_Z(z) = \frac{\lambda}{2} e^{- \lambda \lvert z \rvert }.
+\end{equation*}
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q20} Let $X_1, X_2, \ldots , X_n$ be a sequence of independent random variables, all having a common density function $f_X$ with support $[a, b]$ (see Exercise $19$). Let $S_n = X_1 + X_2 + \cdots + X_n$, with density function $f_{S_n}$. Show that the support of $f_{S_n}$ is the interval $[na, nb]$. Hint: Write $f_{S_n} = f_{S_n-1} \cdot f_X$. Now use Exercise $19$ to establish the desired result by induction.
+
+\vspace*{.5cm}
+\noindent
+Suppose that $n=1$. Then, $f_{S_n} = f_{S_1} = f_{X_1}$ has support in the interval $[na, nb] = [a,b]$ because $f_X$ is defined to have support $[a, b]$. 
+
+\vspace*{.5cm}
+\noindent
+Next, suppose that for some $k \geq n$, $f_{S_k}$ has support on $[ka, kb]$. Then, since we know $f_{S_n} = f_{S_n-1} \cdot f_X$, we can say that $f_{S_{k+1}} = f_{S_k} \cdot f_X$. $f_{S_{k+1}}$ then has support on $\big [ ka  + a, kb + b \big ] = \big [(k+1) a, (k+1) b \big ]$. 
+
+\vspace*{.5cm}
+\noindent
+Thus, by induction, we have shown that the support of $f_{S_n}$ is the interval $[na, nb]$ for all $n$.
+
+\vspace*{.5cm}
+\noindent
+\textbf{Ch 7.2 Q21} Let $X_1, X_2, . . . , X_n$ be a sequence of independent random variables, all having a common density function $f_X$. Let $A = S_n/n$ be their average. Find $f_A$ if
+
+\begin{enumerate}[label=(\alph*)]
+\item $f_X(x) = (1 / \sqrt{2 \pi}) e^{- \frac{x^2}{2}}$ (normal density).
+
+\noindent
+Since we know that $A = S_n/n$, $\text{E}(A) = \text{E}(S_n / n) = \frac{1}{n} \text{E}(S_n)$. Then, since $X_1, X_2, . . . , X_n$ is a sequence of independent random variables, the expected value of the sums is the sum of the expected values of each $X_i$ for $i = 1, 2, \ldots $. So, $\text{E}(S_n) = n \cdot \text{E}(X_i) = n \mu$. By plugging in $\text{E}(X_i)$, we can see that $\text{E}(A) = \mu_{X_i} = 0$.
+
+\noindent
+A similar approach can be taken with the variance such that $\text{V}(A) = \text{V}(S_n / n) = \frac{1}{n^2} \text{V}(S_n) = \frac{1}{n^2} n = \frac{1}{n}$.
+
+\noindent
+Then, we use the fact that the sum of independent normally distributed random variables is normally distributed to plug in our values of $\mu$ and $\lambda$ for $A$,
+
+\begin{equation*}
+f_A(x) = \frac{1}{\sqrt{\frac{n}{2 \pi}}} e^{\frac{-n x^2}{2}}.
+\end{equation*}
+
+\item $f_X(x) = e^{- x}$ (exponential density). \textit{Hint}: Write $f_A(x)$ in terms of $f_{S_n}(x)$.
+
+\noindent
+We know that the sum of exponentially distributed random variables is gamma distributed. So, we need to find parameters $\alpha$ and $\beta$ that satisfy $f_A(x)$ based on the distribution of $f_X(x) = e^{- x}$. This is clearly exponentially distributed with parameter $\lambda = 1$. The resulting expected value is $\text{E}(x) = \frac{1}{\lambda}$ and the resulting variance is $\text{E}(x) = \frac{1}{\lambda^2}$. 
+
+\noindent
+The resulting distributions of the sums of random variables, $S_n = \frac{e^{-x} x^{n-1}}{(n-1)!}$. The parameters of this distribution are thus $\alpha = n$ and $\beta = 1$. Since we know that $A = S_n/n$, $\text{E}(A) = \text{E}(S_n / n) = \frac{1}{n} \text{E}(S_n) = \frac{1}{n} \frac{\alpha}{\beta} = \frac{1}{n} \frac{n}{1} = 1$.
+
+\noindent
+A similar approach can be taken with the variance such that $\text{V}(A) = \text{V}(S_n / n) = \frac{1}{n^2} \text{V}(S_n) = \frac{1}{n^2} n = \frac{1}{n} = \frac{\alpha}{\beta^2}$. Since $\text{E}(A) = \frac{\alpha}{\beta} = 1$, it is seen that that $\alpha = \beta$. By plugging this into our variance equation, we can solve for both $\alpha$ and $\beta$ such that $\alpha = \beta = n$.
+
+\noindent
+Then, we use the fact that the sum of independent exponentially distributed random variables is gamma distributed to plug in our values of $\alpha$ and $\beta$ for $A$,
+
+\begin{equation*}
+f_A(x) = \frac{n^n x^{n-1} e^{-xn}}{(n-1)!}.
+\end{equation*}
+
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,343 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,stmaryrd}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{fixltx2e}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+
+ 
+\begin{document}
+ %Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+ 
+\begin{center}
+\textbf{INTRO TO ABSTRACT ALGEBRA} \\
+Jacob Shiohira, FALL 2017 \\
+MATH 310 $|$ University of Nebraska-Lincoln
+\end{center} 
+
+\section*{Chapter 1}
+% TODO: Add a mention about sets and set builder notation that will come up
+
+\begin{center}
+\textbf{Section 1.1: The Division Algorithm} \\
+\end{center}
+
+\noindent
+\textbf{WELL-ORDERING AXIOM} Every nonempty subset of the set of non-negative integers contains a smallest element. \\
+
+\noindent
+\textbf{THEOREM 1.1} Let $a,b$ be integers with $b>0$. Then there exist unique integers $q$ an $r$ such that
+
+\begin{align*}
+a=bq+r \text{     and     } 0 \leq r < b.
+\end{align*}
+
+\noindent
+Notice that the restrictions on $b$ and $r$. If these did not exist, we could find multiple $q,r \in \Z$ that would satisfy the Division Algorithm.
+
+\begin{center}
+\textbf{Section 1.2: Divisibility} \\
+\end{center}
+
+\noindent
+\textbf{DEFINITION}: Let $a$ and $b$ be integers with $b \neq 0$. We say that $b$ \textbf{divides} $a$ (or that $b$ is a divisor of $a$, or that $b$ is a factor of $a$) if $a=bc$ for some integer $c$. In symbols, "$b$ divides $a$" is written $b|a$ and "b does not divide a" is written $b \not | a$. \\
+
+\noindent
+\textbf{Remarks:}
+\begin{enumerate}
+\item Every nonzero integer $b$ divides $0$ because $0=0b$. For every integer $a$, we have  $1$ divides $a$ because $a=1\cdot a$.
+\item If $b$ divides $a$, then $a=bc$ for some $c$. Hence, $-a=b(-c)$, so that $b|(-a)$. An analogous argument shows that every divisor of $-a$ is also a divisor of $a$. Therefore, 
+\begin{center}
+$a$ and $-a$ have the same divisors.
+\end{center}
+
+\item Suppose $a \neq 0$ and $b|a$. Then, $a=bc$, so that $\abs{a}=\abs{b}\abs{c}$. Consequently, $0 \leq \abs{b} \leq \abs{a}$. This last inequality is equivalent to $-\abs{a} \leq b \leq \abs{a}$. Therefore,
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item every divisor of the nonzero integer $a$ is less than or equal to $\abs{a}$;
+\item a nonzero integer has only finitely many divisors.
+\end{enumerate}
+\end{center}
+\item If $a$ and $b$ are integers, then lcm$(a,b)$gcd$(a,b)=\abs{ab}$.
+\end{enumerate}
+
+\noindent
+\textbf{DEFINITION}: Let $a$ and $b$ be integers, $ab \neq 0$. The \textbf{greatest common denominator} (gcd) of $a$ and $b$ is the largest integer $d$ that divides both $a$ and $b$. In other words, $d$ is the gcd of $a$ and $b$ provided that 
+\begin{enumerate}
+\item $d|a$ and $d|b$;
+\item if $c|a$ and $c|b$, then $c \leq d$.
+\end{enumerate} 
+\noindent
+The greatest common divisor of $a$ and $b$ is usually denoted $(a,b)$.\\
+
+\noindent
+\textbf{THEOREM 1.2} Let $a$ and $b$ be integers, $ab \neq 0$, and let $d$ be their greatest common divisor. Then there exist (not necessarily unique) integers $u$ and $v$ such that $d=au+bv$. \\
+\noindent
+\textbf{Remarks:}
+\begin{enumerate}
+\item Every integer that can be written in the form $au+bv$ for some $u, v \in \Z$, is a multiple of the gcd$(a,b)$.
+\item Every common divisor of $a$ and $b$ also divides gcd$(a,b)$.
+\end{enumerate}
+
+% \noindent 
+% We are then able to find a smallest group sent in and or information 
+
+\noindent
+\textbf{COROLLARY 1.3} Let $a$ and $b$ be integers, both not $0$, and let $d$ be a positive integer. Then $d$ is the greatest common divisor of $a$ and $b$ if and only if $d$ satisfies these conditions:
+\begin{enumerate}
+\item $d|a$ and $d|b$;
+\item if $c|d$ and $c|b$, then $c|d$.
+\end{enumerate}
+
+\noindent
+Note that the 'if and only if' part of the statement requires two steps. \\
+
+\noindent
+\textbf{THEOREM 1.4} If $a|bc$ and $(a,b)=1$, then $a|c$. \\
+
+\begin{center}
+\textbf{Section 1.3: Primes and Unique Factorization}
+\end{center}
+
+\noindent
+Every nonzero integer $n$ has except $\pm 1$ has at least four distinct divisors, namely, $1,-1,n,-n$. Integers that have \textit{only} these divisors play a crucial role. \\
+
+\noindent
+\textbf{DEFINITION}: An integer $p$ is said to be \textbf{prime} if $p \neq 0, \pm1$ and the only divisors of $p$ are $\pm 1$ and $\pm p$. \\
+
+\noindent
+\textbf{Remarks:}
+\begin{enumerate}[label=(\alph*)]
+\item $p$ is prime if and only if $-p$ is prime.
+\item If $p$ and $q$ are prime and $p|q$, then $p= \pm q$.
+\item If $p=rt$, then either $r=\pm 1$ or $t=\pm 1$.
+\item Integers $a$ and $b$ are \textit{relatively prime} if gcd$(a,b)=1$.
+\end{enumerate}
+
+\noindent
+\textbf{THEOREM 1.5} Let $p$ be an integer with $p \neq 0, \pm1$. Then $p$ is prime if and only if $p$ has this property:
+\begin{center}
+whenever $p|bc$, then $p|b$ or $p|c$.
+\end{center}
+
+\noindent
+\textbf{Remarks:}
+\begin{enumerate}[label=(\alph*)]
+\item This theorem is especially useful when proving that if $p|b^2$ for any prime $p$ and some integer $b$, then $p|b$ or $p|b$
+\end{enumerate}
+
+\noindent
+\textbf{COROLLARY 1.6} If $p$ is prime and $p|a_1a_2 \cdot \cdot \cdot a_n$, then $p$ divides at least on eof the $a_i$. \\
+
+\noindent
+\textbf{THEOREM 1.7} Every integer $n$ except $0, \pm 1$ is a product of primes. \\
+
+\noindent
+\textbf{THEOREM 1.8} Every integer $n$ except $0, \pm 1$ is a product of primes. This prime factorization is unique in the following sense: If
+\begin{align*}
+n=p_1p_1 \cdot \cdot \cdot p_r \text{     and     } n=q_1q_1 \cdot \cdot \cdot q_s
+\end{align*}
+with each $p_i, q_j$ prime, then $r=s$ (that is, the number of factors is the same) and after reordering and relabeling the $q's$,
+\begin{align*}
+p_1=\pm q_1, \text{     }, p_2=\pm q_2, \text{     }, p_3=\pm q_3, \text{     }, ..., p_r=\pm q_r.
+\end{align*}
+
+\noindent
+\textbf{COROLLARY 1.9} Every integer $n>1$ can be written in one and only one way in the form $n=p_1p_2p_3 \cdot \cdot \cdot p_r$ where $p_i$ are positive primes such that $p_1 \leq p_2 \leq p_3 \leq \cdot \cdot \cdot p_r$. \\
+
+\noindent
+\textbf{THEOREM 1.10} Let $n>1$. If $n$ has no positive prime factor less than or equal to $\sqrt{n}$, then $n$ is prime. \\
+
+\begin{center}
+\textbf{Helpful Proofs}
+\end{center}
+
+\noindent
+\textbf{Euclidean Algorithm} Find $(4631, 42371)$. \\
+
+\noindent
+By the Euclidean Algorithm, we have 
+
+\begin{align*}
+42371 & = 9 \cdot 4361 + 3122 \\
+4361 & = 1 \cdot 3122 + 1239 \\
+3122 & = 2 \cdot 1239 + 644 \\
+1239 & = 1 \cdot 644 + 595 \\
+644 & = 1 \cdot 595 + 49 \\
+595 & = 12 \cdot 49 + 7 \\
+49 & = 7 \cdot 7 + 0 \\
+\end{align*}
+
+\noindent
+therefore $(4361, 42371)=7$.\\ 
+
+\noindent
+\textbf{Famous Induction Proof} If $n$ is a positive integer, then 
+\begin{center}
+$1+2+ \cdot \cdot \cdot + n = \frac{n(n+1)}{2}$.
+\end{center}
+
+\begin{tcolorbox}
+To verify that a proposition $P(n)$ holds for all natural numbers $n$, the \textbf{Principle of Mathematical Induction} consists of successfully carrying out the following two steps: 
+
+\begin{itemize}
+\item \textbf{Base Case}: Prove that $P(0)$ is true.
+\item \textbf{Induction Step}: Assume that $P(n)$ is true for any arbitrary $n$, then prove that $P(n+1)$ is true.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{.2cm}
+\noindent
+We will proceed by induction that, for all $n \in \Z_+$,
+\begin{align*}
+\sum_{n=1}^{n} i = \frac{n(n+1)}{2}.
+\end{align*}
+
+\noindent
+\textbf{Base Case} When $n=1$, the LHS is the sum of the first $1$ integer, which is simply $1$. The RHS is $1(1+1)/2=1$. Both sides are equal, and the inductive hypothesis holds for the base case. \\
+
+\noindent
+\textbf{Inductive Case} Let $m$ and $k$ be integers such that $m \geq 1$ and $1 \leq k \leq m$. Suppose that $P(k)$ holds. We then want to prove that $P(k+1)$ holds
+\begin{align*}
+\sum_{i=1}^{k+1} i & = \frac{(k+1)(k+2)}{2} \\
+& = [1+2+ \cdot \cdot \cdot + k] + (k+1)
+\end{align*}
+
+\noindent
+Well, by the summation,
+\begin{align*}
+\sum_{i=1}^{k+1} i & = 1+2+ \cdot \cdot \cdot + k + (k+1) \\
+& = [1+2+ \cdot \cdot \cdot + k] + (k+1)
+\end{align*}
+
+\noindent
+By the induction hypothesis,
+\begin{align*}
+\sum_{i=1}^{k+1} i & =  \sum_{i=1}^{k} i  + (k+1) \\
+& = \frac{k(k+1)}{2}  + (k+1) \\
+& =  \frac{k^2+k)}{2} +  \frac{2(k+1)}{2}\\
+& =  \frac{k^2+k)}{2} +  \frac{2k+2)}{2}\\
+& =  \frac{k^2+3k+2)}{2} \\
+& =  \frac{(k+1)(k+2)}{2}
+\end{align*}
+
+\noindent
+Thus, $P(k+1)$ holds, and the proof of the induction step is complete. We may now conclude that, by the principle of mathematical induction, $P(n)$ holds true for all $n \in \Z_+$. \\
+
+\noindent
+\textbf{Infinitude of Primes} Suppose that there are actually a finite number of primes such that $p_1<p_2<...<p_r$. Then, let $N=p_1p_2 \cdot \cdot \cdot p_r$. By the Fundamental Theorem of Arithmetic, $N+1$ also has a unique prime factorization. $N-1$ is either prime or composite. If $N-1$ is prime, then we have found another prime and contradict our original assumption. If $N-1$ is composite, it is a product of primes such that it has a prime $p_i$ in common with $N$. So, $p_i$ divides $N-(N-1)=1$, which is a contradiction. There is no prime $q$ such that $q|1$ because that would imply that $q \leq 1$, but by definition, $q>1$. Thus, there are an infinite number of primes. \qedsymbol
+
+\section*{Chapter 2}
+% TODO: Add a mention about sets and set builder notation that will come up
+
+\begin{center}
+\textbf{Section 2.1: Congruence and Congruence Classes} \\
+\end{center}
+
+\noindent
+\textbf{Definition} Let $a,b,n$ be integers with $n>0$. Then $a$ is congruent $b$ modulo $n$, written "$a \equiv b (\text{mod}n)$", provided $n$ divides $a-b$. \\
+
+\noindent
+\textbf{Theorem 2.1} Let $n$ be a positive integer. for all $a,b,c \in \Z$,
+\begin{enumerate}
+\item $a \equiv a (\text{mod}n)$;
+\item If $a \equiv b (\text{mod}n)$, then $b \equiv a (\text{mod}n)$;
+\item If $a \equiv b (\text{mod}n)$ and $b \equiv c (\text{mod}n)$, then $a \equiv c (\text{mod}n)$.
+\end{enumerate}
+
+\noindent
+\textbf{Theorem 2.2} If $a \equiv b (\text{mod}n)$ and $b \equiv c (\text{mod}n)$,
+\begin{enumerate}
+\item $a + c \equiv b + d(\text{mod}n)$
+\item $ac \equiv bd (\text{mod}n)$
+\end{enumerate}
+
+\noindent
+\textbf{Definition} Let $a$ an $n$ be integers $n>0$. The congruence class of a modulo $n$ (denoted by [$a$]) is the set of all those integers that are congruent to a modulo $n$, that is,
+\begin{center}
+[$a$]$=\{b|b \in \Z \text{  and  } b \equiv a(\text{mod}n)\}$.
+\end{center}
+
+\noindent
+\textbf{Theorem 2.3} $a \equiv c (\text{mod}n)$ if and only if [$a$]$=$[$c$]. \\
+
+\noindent
+\textbf{Corollary 2.4} Two congruence classes modulo $n$ are either disjoint or identical. \\
+
+\noindent
+\textbf{Corollary 2.5} Let $n>1$ be an integer and consider congruence modulo $n$.
+\begin{enumerate}
+\item If $a$ is any integer and $r$ is the remainder when $a$ is divided by $n$, then [$a$]$=$[$r$].
+\item There are exactly $n$ distinct congruence classes, namely, [$0$], [$1$], [$2$], $\cdot \cdot \cdot$, [$n-1$].
+\end{enumerate}
+
+\noindent
+\textbf{Definition} The set of all congruence classes modulo $n$ is denoted $\Z_n$ (which is read "$\Z$ mod $n$). \\
+
+\noindent
+\textbf{Theorem 2.6} If [$a$]$=$[$b$] and [$c$]$=$[$d$] in $\Z_n$, then \\
+\begin{center}
+[$a+c$]$=$[$b+d$] and [$ac$]$=$[$bd$].
+\end{center}
+
+\noindent
+\textbf{Definition} Addition and multiplication in $\Z_n$ are defined by \\
+\begin{center}
+[$a$]$\oplus$[$r$]$=$[$a+c$] and [$a$]$\varodot$[$c$]$=$[$ac$].
+\end{center}
+
+\noindent
+\textbf{Theorem 2.7} For any classes [$a$], [$b$], [$c$] in $\Z_n$,
+\begin{enumerate}
+\item If [$a$] $\in \Z_n$ and [$b$] $\in Z_n$, then [$a$]$\oplus$[$b$]$\in \Z_n$. \\
+\item [$a$]$\oplus$([$b$]$\oplus$[$c$])$=$([$b$]$\oplus$[$a$])$\oplus$[$c$]. \\
+\item [$a$]$\oplus$([$0$]$=$[$0$]$\oplus$[$a$]. \\
+\item [$a$]$\oplus$([$0$]$=$[$a$]$=$[$0$]$\oplus$[$a$]. \\
+\item For each $[$a$]$ in $\Z_n$, the equation [$a$]$\oplus X=$[$0$] has a solution in $\Z_n$. \\
+\item If [$a$] $\in \Z_n$ and [$b$]$\in \Z_n$, then [$a$]$\varodot$[$b$]$\in \Z_n$. \\
+\item [$a$] $\varodot$([$b$]$\varodot$[$c$])$=$([$a$]$\varodot$[$b$])$\varodot$[$c$]. \\
+\item  [$a$] $\varodot$[$b$]$=$[$b$]$\varodot$[$a$]. \\
+\item [$a$] $\varodot$[$1$]$=$[$a$]$=$[$1$]$\varodot$[$a$].
+\end{enumerate}
+
+\noindent
+\textbf{Theorem 2.8} If $p>1$ is an integer, then the following conditions are equivalent:
+\begin{enumerate}
+\item $p$ is prime
+\item For any $a \neq 0 \in \Z_p$, the equation $ax=1$ has a solution in $\Z_p$.
+\item Whenever $bc=0$ in $\Z_p$, then $b=0$ or $c=0$.
+\end{enumerate}
+
+\noindent
+\textbf{Theorem 2.9} Let $a$ an $n$ be integers with $n>1$. Then
+\begin{center}
+The equation $[a]x=[1]$ has a solution in $\Z_n$ if and only if $(a,n)=1$ in $\Z$.
+\end{center}
+
+\noindent
+\textbf{Theorem 2.10}
+Let $a$ and $n$ be integers with $n>1$. Then
+\begin{center}
+$[a]$ is a unit with $\Z_n$ if and only if $(a,n)=1$ in $\Z$.
+\end{center}
+\end{document} 

@@ -1,0 +1,90 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+Prove that (L) $(A \cap B) \cup C = A \cap (B \cup C)$ (R) if and only if $C \subset A$ 
+\end{center}
+
+\begin{flushleft}
+\textbf{PROOF}
+\end{flushleft}
+
+% STATEMENT 1
+\begin{flushleft}
+ By definition, we know a set $C$ is a subset of another set $A$ iff all elements of $C$ are contained in $A$. In other words, there cannot be a single element $x$ that belongs to $C$ but does not belong to $A$. \\
+ \vspace{.2cm}
+ Suppose $x \in C$. We don't have to worry about the cases when $x$ doesn't belong to $C$ because our hypothesis assumes $C \subset A$.\\
+  \vspace{.2cm}
+ \textbf{(Case 1)} if $x \in B$ and $x \in A$ \\
+  \vspace{.2cm}
+ \textbf{(Case 2)} if $x \in B$ and $x \not \in A$\\ 
+  \vspace{.2cm}
+ \textbf{(Case 3)} if $x \not \in B$ and $x \in A$\\ 
+  \vspace{.2cm}
+ \textbf{(Case 4)} if $x \not \in B$ and $x \not \in A$\\ 
+\end{flushleft}
+
+% STATEMENT 1
+\begin{flushleft}
+ (1)\:\: If an element $x$ belongs to $A,B,C$ then $L=R$ regardless of the \\
+ \qquad combination of intersections and unions. \\
+ \end{flushleft}
+
+% STATEMENT 2
+\begin{flushleft}
+ (2)\:\: We can evaluate at both $L$ and $R$ and then compare them. For $L$, an \\
+ \qquad element $x$ does not belong to $A$ and $B$. However, it does belong to $C$, so \\
+ \qquad $x$ exists in $L$. For $R$, an element $x$ belongs to $B$ or $C$. However, it does \\
+ \qquad not belong to $A$. Since it is not in both, $x$ does not exist in $R$. $L \neq R$.\\
+\end{flushleft}
+
+% STATEMENT 3
+\begin{flushleft}
+ (3)\:\: Again, we can evaluate at both $L$ and $R$ and then compare them. For $L$, \\
+ \qquad an element $x$ does not belong to $A$ and $B$. However, it does belong to $C$, \\
+ \qquad so $x$ exists in $L$. For $R$, an element $x$ belongs to $B$ or $C$. Additionally, it  \\
+ \qquad belongs to $A$ as well. Since it is in both, $x$ exists in $R$. $L=R$.\\
+ \end{flushleft}
+
+
+% STATEMENT 4
+\begin{flushleft}
+ (4)\:\: Again, we can evaluate at both $L$ and $R$ and then compare them. For $L$, \\
+ \qquad an element $x$ does not belong to $A$ and $B$. However, it does belong to $C$, \\
+ \qquad so $x$ exists in $L$. For $R$, an element $x$ belongs to $B$ or $C$. However, it does \\
+ \qquad not belong to $A$. Since it is not in both, $x$ does not exist in $R$. $L \neq R$.\\
+ \end{flushleft}
+
+% BEGINNING OF CONCLUSION
+\begin{flushleft}
+\textbf{CONSLUSION}\\
+\end{flushleft}
+
+\begin{flushleft}
+From \textbf{Cases 1-4}, we saw that the only time when the hypothesis held \\
+true was \textbf{Case 1} and \textbf{Case 2}. In both instances, an element $x$ belonged \\
+to both $C$ and $A$. The value of the equation never depended on whether \\
+or not $x$ belonged to $B$. So, by definition, $C \subset A$ because when $x$ belongs \\
+to $C$, $x$ also belongs to $A$. \\
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.7in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 1}
+\begin{flushleft}
+Assume that $f(x) \leq g(x) \leq h(x)$ for all x in some open interval containing a, except perhaps at a itself. If $\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} h(x) = L$, then $\lim_{x \to a} g(x)$ exists and equals L, also. Justify each step in the following proof of the squeeze theorem.
+\begin{enumerate}[a)]
+\item Given $\epsilon > 0$ show that there exists a $\delta_1 > 0$ such that if $0 < \abs{x-a} < \delta_1$, then $\abs{f(x) - L} < \epsilon$.
+\item Show that if $0 < \abs{x-a} < \delta_1$, then $L - \epsilon < f(x)$.
+\item Show that there exists a $\delta_2>0$ such that if $0 < \abs{x-a} < \delta_2$, then $h(x) < L + \epsilon$
+\item Let $\delta=min{\delta_1, \delta_2}$. Show: If $0 <  \abs{x-a} < \delta$, then $L-\epsilon< g(x) < L+\epsilon$
+\item Complete the proof by showing that if $0<\abs{x-a}<\delta$, then $\abs{g(x)-L} < \epsilon$.
+\end{enumerate}
+
+\newpage
+
+\section*{Problem 2}
+\begin{enumerate}[a)]
+\item \begin{enumerate}[a)] \item Suppose that $f(xx) \leq 0$ for all $x$ (except perhaps at $x=a$). Show: if $\displaystyle \lim_{x \to a} f(x)=L$, then $L\leq0$. Hint: Assume instead that $L > 0$. Let $\epsilon=\frac{L}{2}$ and derive a contradiction \item State and prove the analogue for $f(x) \geq 0$. \end{enumerate}
+\item Assume that $g(x) \leq h(x)$ for all $x$ (except perhaps at $a$). If $\displaystyle \lim_{x \to a} g(x)=M$
+and $\displaystyle \lim_{x \to a} h(x) = N$, prove that $M \leq N$. (Hint: Let $f(x) = g(x) - h(x)$ and then use problem 2.2.9). \end{enumerate}
+
+\newpage
+
+\section*{Problem 3}
+Prove (from the $\epsilon-\delta$ definition) that $\displaystyle \lim_{x \to 3} \sqrt{3-x}$ does not exist, but $\displaystyle \lim_{x \to 3^-} \sqrt{3-x}$ = 0.
+
+\newpage
+
+\section*{Problem 4}
+Consider the set of numbers ${a_n: n \in \mathbb{N}}$ where each $a_n$ is determined via this recursive definition:\\
+
+\begin{center}
+$a_1=2$ and $a_n=2-\frac{1}{a_{n-1}}$ for $n \geq 2$.\\  
+\end{center}
+For example,
+\begin{center}
+$a_1=2$, $a_2=2-\frac{1}{a_1}=2-\frac{1}{2}=\frac{3}{2}$, $a_3=2-\frac{1}{\frac{3}{2}}=\frac{4}{3}$, etc. \\  
+\end{center}
+Use induction to prove that for all $n \in \mathbb{N}$ we have $a_n = \frac{n+1}{n}$.
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ \usepackage{gensymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\nspace}{\vspace*{.5cm}}
+\newcommand{\nline}{\nspace \noindent}
+
+\newcommand{\expected}[1]{\text{E}(#1)}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+ 
+% pg 338: 1,2,3,5,10,12
+ 
+\begin{document}
+\title{Math 487 Final Review}
+\author{Jacob Shiohira}
+\maketitle
+
+\noindent
+\textbf{Q1} Let $S_{100}$ be the number of heads that turn up in $100$ tosses of a fair coin. Use the Central Limit Theorem to estimate
+
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbb{P}(S_{100} \leq 45)$
+
+\begin{align*}
+\mathbb{P}(S_{100} \leq 45) &= \mathbb{P}\Bigg ( \frac{S_{100}}{\sqrt{100}} \leq \frac{45-(100 \cdot .5)}{\sqrt{100 \cdot .5 \cdot .5)}} \Bigg ) \\
+&= \mathbb{P} \Bigg ( \frac{S_{100}}{\sqrt{100}} \leq -1 \Bigg ) \\
+&= .1587
+\end{align*}
+
+\item $\mathbb{P}(45 < S_{100} < 55)$
+
+\begin{align*}
+\mathbb{P}(S_{100} < 45) &= \mathbb{P}\Bigg (\frac{45.5-(100 \cdot .5)}{\sqrt{100 \cdot .5 \cdot .5)}} < \frac{S_{100}}{\sqrt{100}} < \frac{54.5-(100 \cdot .5)}{\sqrt{100 \cdot .5 \cdot .5)}} \Bigg ) \\
+&= \mathbb{P} \Bigg (-.9 < \frac{S_{100}}{\sqrt{100}} < .9 \Bigg ) \\
+&= \mathbb{P} \Bigg (\frac{S_{100}}{\sqrt{100}} < .9 \Bigg )  - \mathbb{P} \Bigg (-.9 < \frac{S_{100}}{\sqrt{100}} \Bigg ) \\
+&= .815594 - .18406 \\
+& = 0.6315
+\end{align*}
+
+% TODO: one off .1 off on (c) and (d)
+\item $\mathbb{P}(S_{100} > 63)$
+
+\begin{align*}
+\mathbb{P}(S_{100} > 63) &= \mathbb{P}\Bigg ( \frac{S_{100}}{\sqrt{100}} > \frac{63.5 - (100 \cdot .5)}{\sqrt{100 \cdot .5 \cdot .5)}} \Bigg ) \\
+&= 1- \mathbb{P}\Bigg ( \frac{S_{100}}{\sqrt{100}} > 2.7 \Bigg ) \\
+&= 1- .99653 \\
+&= 0.00347
+\end{align*}
+
+\item $\mathbb{P}(S_{100} < 57)$
+\end{enumerate}
+
+\begin{align*}
+\mathbb{P}(S_{100} < 57) &= \mathbb{P}\Bigg ( \frac{S_{100}}{\sqrt{100}} < \frac{56.5 - (100 \cdot .5)}{\sqrt{100 \cdot .5 \cdot .5)}} \Bigg ) \\
+&= \mathbb{P}\Bigg ( \frac{S_{100}}{\sqrt{100}} < 1.3 \Bigg ) \\
+&= .9032 
+\end{align*}
+
+\noindent
+\textbf{Q2} Let $S_{200}$ be the number of heads that turn up in $200$ tosses of a fair coin. Estimate
+
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbb{P}(S_{200} = 100)$
+
+\begin{align*}
+\mathbb{P}(S_{200} = 100) &\sim \frac{\phi(X_{100})}{\sqrt{200 \cdot .5 \cdot .5}} = \frac{\phi(0)}{\sqrt{50}} = \frac{1}{\sqrt{50}} \Bigg ( \frac{1}{\sqrt{2 \pi}}\Bigg )\\
+&= .056419
+\end{align*}
+
+\item $\mathbb{P}(S_{200} = 90)$
+\begin{align*}
+\mathbb{P}(S_{200} = 90) &\sim \frac{\phi(X_{90})}{\sqrt{200 \cdot .5 \cdot .5}} = \frac{\phi(- \sqrt{2})}{\sqrt{50}} = \frac{1}{\sqrt{50}} \Bigg ( \frac{1}{\sqrt{2 \pi}} e^{- \frac{(-\sqrt{2})^2}{2}} \Bigg )\\
+&= \frac{1}{\sqrt{50}} \Bigg ( \frac{1}{\sqrt{2 \pi}} e^{-1} \Bigg ) \\
+&= .020755
+\end{align*}
+
+\item $\mathbb{P}(S_{200} = 80)$
+
+\begin{align*}
+\mathbb{P}(S_{200} = 80) &\sim \frac{\phi(X_{80})}{\sqrt{200 \cdot .5 \cdot .5}} = \frac{\phi(- \sqrt{8})}{\sqrt{50}} = \frac{1}{\sqrt{50}} \Bigg ( \frac{1}{\sqrt{2 \pi}} e^{- \frac{(-\sqrt{8})^2}{2}} \Bigg )\\
+&= \frac{1}{\sqrt{50}} \Bigg ( \frac{1}{\sqrt{2 \pi}} e^{-4} \Bigg ) \\
+&= .001033
+\end{align*}
+\end{enumerate}
+
+\noindent
+\textbf{Q3} A true-false examination has $48$ questions. June has probability $3/4$ of answering a question correctly. April just guesses on each question. A passing score is $30$ or more correct answers. Compare the probability that June passes the exam with the probability that April passes it.
+
+\vspace*{.3cm}
+\noindent
+Note that $\mathbb{P}(S_{48} \geq 30) = 1 - \mathbb{P}(S_{48} < 30) = 1 - \mathbb{P}(S_{48} \leq 29.5)$. We will use this fact to calculate the probability that June and April pass the exam.
+
+\begin{align*}
+\mathbb{P}(S_{48} \leq 29.5) &= \mathbb{P}\Bigg ( \frac{S_{48}}{\sqrt{48}} \leq \frac{29.5 - (48 \cdot .75)}{\sqrt{48 \cdot .75 \cdot .25)}} \Bigg ) \\
+&= 1- \mathbb{P}\Bigg ( \frac{S_{48}}{\sqrt{48}} \leq -2.1667 \Bigg ) \\
+&=  1- z(-2.1667) \\
+&= 0.985
+\end{align*}
+
+\begin{align*}
+\mathbb{P}(S_{48} \leq 29.5) &= \mathbb{P}\Bigg ( \frac{S_{48}}{\sqrt{48}} \leq \frac{29.5 - (48 \cdot .5)}{\sqrt{48 \cdot .5 \cdot .5)}} \Bigg ) \\
+&= 1- \mathbb{P}\Bigg ( \frac{S_{48}}{\sqrt{48}} \leq 1.5877 \Bigg ) \\
+&=  1- z(1.5877) \\
+&= 0.05705
+\end{align*}
+
+\noindent
+So, it can be seen that June has a $98.5\%$ chance of passing the exam while April only has a $5.7\%$ chance of passing the exam.
+
+\vspace*{.3cm}
+\noindent
+\textbf{Q5} A rookie is brought to a baseball club on the assumption that he will have a $.300$ batting average. (Batting average is the ratio of the number of hits to the number of times at bat.) In the first year, he comes to bat $300$ times and his batting average is $.267$. Assume that his at bats can be considered Bernoulli trials with probability $.3$ for success. Could such a low average be considered just bad luck or should he be sent back to the minor leagues? Comment on the assumption of Bernoulli trials in this situation.
+
+If his batting average was $.267$ out of $300$ hits, we know he had approximately $80$ hits. So, the probability we want to analyze is the probability that player is likely to have less than $80$ hits out of $300$ at bats with a success rate of $.3$.
+
+\begin{align*}
+\mathbb{P}(S_{300} \leq 80) &= \mathbb{P}\Bigg ( \frac{S_{300}}{\sqrt{300}} \leq \frac{80 - (300 \cdot .3)}{\sqrt{300 \cdot .3 \cdot .7)}} \Bigg ) \\
+&= \mathbb{P}\Bigg ( \frac{S_{300}}{\sqrt{300}} \leq -1.26 \Bigg ) \\
+&=  .10383
+\end{align*}
+
+
+\noindent
+\textbf{Q10} Find the probability that among $10,000$ random digits the digit $3$ appears not more than $931$ times.
+
+\begin{align*}
+\mathbb{P}(S_{10,000} \leq 931) &= \mathbb{P}\Bigg ( \frac{S_{10,000}}{\sqrt{10,000}} \leq \frac{931 - (10,000 \cdot .1)}{\sqrt{10,000 \cdot .1 \cdot .9)}} \Bigg ) \\
+&= \mathbb{P}\Bigg ( \frac{S_{10,000}}{\sqrt{10,000}} \leq -2.3 \Bigg ) \\
+&=  .0107
+\end{align*}
+
+
+\noindent
+\textbf{Q12} A balanced coin is flipped $400$ times. Determine the number $x$ such that the probability that the number of heads is between $200 - x$ and $200 + x$ is  approximately $.80$.
+
+\begin{align*}
+\mathbb{P}( 200 - x \leq S_{400} \leq 200 + x) &= \mathbb{P}\Bigg ( \frac{(200 - x) - (400 \cdot .5)}{\sqrt{400 \cdot .5 \cdot .5)}} \leq S_{400} \leq \frac{(200 + x) - (400 \cdot .5)}{\sqrt{400 \cdot .5 \cdot .5)}} \Bigg ) = .8 \\
+&= \mathbb{P}\Bigg ( \frac{(200 - x) - 200}{10} \leq S_{400} \leq \frac{(200 + x) - 200}{10} \Bigg ) = .8 \\
+&= \mathbb{P}\Bigg ( \frac{-x}{10} \leq S_{400} \leq \frac{x}{10} \Bigg ) = .8 \\
+&= 2 \cdot \mathbb{P}\Bigg ( 0 \leq S_{400} \leq \frac{x}{10} \Bigg ) = .8 \\
+&= \mathbb{P}\Bigg (S_{400} \leq \frac{x}{10} \Bigg ) - \mathbb{P}\Bigg (S_{400} \leq 0 \Bigg ) = .4 \\
+&= \mathbb{P}\Bigg (S_{400} \leq \frac{x}{10} \Bigg ) = .9 \\
+&= \mathbb{P}\Bigg (S_{400} \leq 1.28 \Bigg ) = .9 \\
+\end{align*}
+
+\noindent
+So, we know that $\frac{x}{10} = 1.28$. Thus, $x \sim 13$.
+
+\end{document} 

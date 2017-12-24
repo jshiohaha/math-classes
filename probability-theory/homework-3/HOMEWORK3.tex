@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+ 
+\begin{document}
+\title{Math 487 Homework 3}
+\author{Jacob Shiohira}
+\maketitle
+
+\noindent
+Ch5. Q1: Let $A$ and $B$ be disjoint events, with $0 < \mathbb{P}(A) + \mathbb{P}(B) < 1$. Express in terms of $x = \mathbb{P}(A)$ and $y=\mathbb{P}(B)$ the probabilities of the events:
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item $A$ but $B$ does not occur;
+
+\begin{equation*}
+x(1-y)
+\end{equation*}
+
+\item either $A$ does not occur or $B$ does not occur;
+
+\begin{equation*}
+(1-x)+(1-y)-((1-x) \cdot (1-y))
+\end{equation*}
+
+\item either $A$ occurs or $B$ does not occur; 
+
+\begin{equation*}
+x + (1-y) - (x \cdot (1-y))
+\end{equation*}
+
+\item neither the event $A$ nor the event $B$ occurs;
+
+\begin{equation*}
+(1-x) \cdot (1-y)
+\end{equation*}
+
+\item either $A$ but not $B$ occurs, or $B$ but not $A$ occurs;
+
+\begin{equation*}
+x+y-2xy
+\end{equation*}
+
+\item $A$ but not $B$ occurs; $B$ but not $A$ fails to occur.
+% TODO: ask about this one
+\begin{equation*}
+(x \cdot (1-y) \cdot ((1-y) + x - (1-y) \cdot x))
+\end{equation*}
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+Ch5. Q5: In a certain city, $53\%$ of the adults are female and $15\%$ are unemployed males.
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item What is the probability that an adult chosen at random in this city is an employed male?
+
+\begin{align*}
+\mathbb{P}(\text{unemployed males}) & = \big ( 1-\mathbb{P}(\text{female}) \big ) \cdot \big ( 1 - \mathbb{P}(\text{unemployed males}) \big ) \\
+& = 47 \% \cdot 85 \% \\
+& \sim 40 \%
+\end{align*}
+
+\item If the overall unemployment rate is $22\%$, what is the probability that an adult is an employed female?
+
+\begin{align*}
+\mathbb{P}(\text{employed female}) & = \mathbb{P}(\text{female adult}) \cdot \Big (1 - \big ( \mathbb{P}(\text{total unemployment}) - \mathbb{P}(\text{unemployed males}) \big ) \Big ) \\
+& = 53\% \cdot 93\% \\
+& \sim 49 \%
+\end{align*}
+
+\item What is the probability that an adult is employed or female (or both)?
+
+\begin{align*}
+\mathbb{P}(\text{employed or female}) & = \mathbb{P}(\text{female}) + \mathbb{P}(\text{employed adult}) - \mathbb{P}(\text{both}) \\
+& = 53\% + 78\% - (53\% \cdot 78\%) \\
+& \sim 90 \%
+\end{align*}
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch5. Q8: In five tosses of a fair coin, what is the probability that the first head does not appear until the third toss or there are at least three straight heads (or both)?
+
+\vspace{.3cm}
+\noindent
+Since we are dealing with a fair coin,
+
+\begin{equation*}
+\mathbb{P}(\text{H}) = \mathbb{P}(\text{T}) = \frac{1}{2}.
+\end{equation*}
+
+\noindent
+Then, the probability of all possible combinations is $\frac{1}{2^5} = \frac{1}{32}$. The probability that the first head does not appear until the third toss or there are at least three straight heads is then,
+
+\begin{align*}
+\mathbb{P}(\text{$3^{\text{rd}}$}) = & \big ( \mathbb{P}(\text{TTHTT}) + \mathbb{P}(\text{TTHTH}) + \mathbb{P}(\text{TTHHT}) + \mathbb{P}(\text{TTHHH}) \big ) + \\
+& \big ( \mathbb{P}(\text{HHHTT}) + \mathbb{P}(\text{HHHTH}) + \mathbb{P}(\text{HHHHT}) + \mathbb{P}(\text{HHHHH}) + \\
+& \hspace{.2cm} \mathbb{P}(\text{THHHT}) + \mathbb{P}(\text{THHHH}) + \mathbb{P}(\text{TTHHH}) + \mathbb{P}(\text{HTHHH}) \big ) - \\
+& \hspace{.2cm} \mathbb{P}(\text{TTHHH}) \\
+= & \frac{4}{32} + \frac{8}{32} - \frac{1}{32} \\
+= & \frac{11}{32}
+\end{align*}
+
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch5. Q9: The symmetric difference between two sets $A$ and $B$ is defined by the equation $A \triangle B = A \cap \overline{B} + B \cap \overline{A}$. Prove that, for events $A$ and $B$, we have $\mathbb{P}(A \triangle B) = \mathbb{P}(A) + \mathbb{P}(B) - 2\mathbb{P}(A \cap B)$. (Do not rely on Venn Diagrams).
+
+\vspace{.3cm}
+\noindent
+We can reinterpret the definition of the symmetric difference as probability, 
+
+\begin{align*}
+\mathbb{P}(A \cap \overline{B} \cup B \cap \overline{A}) & = \mathbb{P}(A \cap \overline{B}) + \mathbb{P}(B \cap \overline{A})  \\
+& = \big ( \mathbb{P}(A) - \mathbb{P}(A \cap B)) \big ) + \big ( \mathbb{P}(B) - \mathbb{A \cap B}) \big ) \\
+& = \mathbb{P}(A)  +  \mathbb{P}(B) - \mathbb{A \cap B} - \mathbb{P}(A \cap B) \\
+& = \mathbb{P}(A)  +  \mathbb{P}(B) - 2 \mathbb{P}(A \cap B)
+\end{align*}
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch6. Q3: How many ordered samples of size five, without replacement, are there in a set containing 30 elements? Solve this problem in two ways: directly and using Stirling's formula.
+
+\vspace{.3cm}
+\noindent
+To model the sampling a subset of a sample space without replacement, we can use $(n)_m$, which models permutations of $n$ items taken $k$ at a time.
+
+\begin{equation*}
+(n)_m = n \cdot (n-1) \cdot \ldots \cdot (n-m+1) = \frac{n!}{ \big ( n - k \big )!} = \frac{30!}{25!} = 17,100,720.
+\end{equation*}
+
+Using Stirling's Approximation, we see that
+
+\begin{align*}
+(n)_m =  \frac{n!}{ \big ( n - k \big )!} & \sim \frac{(2 \pi)^{\frac{1}{2}}n^{n+\frac{1}{2}}e^{-n}}{ (2 \pi)^{\frac{1}{2}}(n-k)^{(n-k)+\frac{1}{2}}e^{-(n-k)} } \\
+& \sim \frac{30^{30.5}e^{-30}}{ 25^{25.5}e^{-25} } \\
+& \sim 17,110,222
+\end{align*}
+
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch6. Q5: 
+
+\begin{enumerate}[label=(\alph*)]
+\item Suppose that an ordered sample, with replacement, of size three is selected from a set of five elements. What is the probability that the sample obtained is an ordered sample without replacement (that is, that all the terms of the $3$-tuple are different)? 
+
+\vspace{.3cm}
+\noindent
+Since $3$ elements are selected from a set of $5$ elements with replacement, we know that the total number of combinations can be found with $n^k=5^3=125$. Then, the number of ordered samples without replacement can be found with $(n)_k$,
+
+\begin{equation*}
+(n)_k = \frac{n!}{(n-k)!}=\frac{5!}{2!} = 60.
+\end{equation*}
+
+\noindent 
+So, we find the probability that the sample obtained is an ordered sample without replacement by taking $\frac{60}{125} \sim 48 \%$.
+
+\item What is the probability that an ordered sample, with replacement, of size $m$ selected from a set of $n$ elements $(n \geq m > 1)$ is an ordered sample without replacement?
+
+\vspace{.3cm}
+\noindent
+The number ordered samples of size $m$ selected from a set of $n$ elements with replacement is calculated with $n^m$. Then, the number of ordered samples without replacement is found with $\frac{n!}{(n-m)!}$. So, by combining those, we find that the probability of an ordered sample with replacement is an ordered sample without replacement with
+
+\noindent
+\begin{equation*}
+\frac{n!}{n^m(n-m)!}
+\end{equation*}
+\end{enumerate}
+
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch6. Q6: How many words can be created from the word SAMPLE? A created word does not have to be an actual English word, but it may contain at most as many instances of a letter as there are in the original word (for example, `ama' is not acceptable, whereas `pma' is).
+
+\vspace{.3cm}
+\noindent
+\begin{equation*}
+\sum_{i=1}^{6} \frac{6!}{ \big ( 6 - i \big )! }= \frac{6!}{5!} + \frac{6!}{4!} + \frac{6!}{3!} + \frac{6!}{2!} + \frac{6!}{1!} + \frac{6!}{0!} = 1,956.
+\end{equation*}
+
+% ================================================================================================
+% ================================================================================================
+\vspace{.5cm}
+
+\noindent
+Ch6. Q8: The standard car license plate in a certain state has seven characters. The first character is one of the digits $1, 2, 3$, or $4$; the next three characters are letters (repetitions allowed); and thee final three characters are digits ($0, 1,..., 9$); repetitions are allowed. 
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item How many license plates are possible?
+
+\begin{equation*}
+4 \cdot 26^3 \cdot 9^3=70,304,000 \text{ combinations}.
+\end{equation*}
+
+\item How many have no repeated characters?
+% TODO: start the second 3 set of numbers at 8 because you choose one at the beginning of the license plate
+\begin{equation*}
+4 \cdot (26 \cdot 25 \cdot 24) \cdot (9 \cdot 8 \cdot 7) = 31,449,600 \text{ combinations} 
+\end{equation*}
+
+\item How many have a vowel ($A$, $E$, $I$, $O$, or $U$) as the first letter or the sequence $222$ as the final three digits?
+
+\vspace{.5cm}
+\noindent
+There likelihood that the first letter is a vowel is $\frac{5}{26}$, and the likelihood of $222$ being the final three digits is $\frac{1}{10^3}$. So, we can now find the probability of either of those events happening,
+
+\begin{equation*}
+\frac{5}{26} + \frac{1}{1000} - (\frac{5}{26} \cdot \frac{1}{1000}) \sim 19.3 \%
+\end{equation*}
+
+\item Assuming that each license plate is equally likely, what is the probability that a license plate chosen at random ends with your favorite digit?
+
+\vspace{.5cm}
+\noindent
+From part $(a)$, we know that there are $70,304,000$ possible license number. We can find the number of combinations of license plates that might end with our favorite digit with
+\begin{equation*}
+4 \cdot 26^3 \cdot 10^2 \cdot 1 = 7,030,400 \text{ combinations} 
+\end{equation*}
+
+\noindent
+Here we can find the probability of the of our event happening by dividing the cardinality of our event by the cardinality of all license plate possibilities,
+
+\begin{equation*}
+\frac{\mathbb{P}(\text{license plate ending with favorite number})}{\mathbb{P}(\text{all license plate combinations})} = \frac{7,030,400}{70,304,000} = 10\%
+\end{equation*}
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+
+
+\end{document} 

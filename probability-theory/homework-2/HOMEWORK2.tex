@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+ 
+\begin{document}
+\title{Math 487 Homework 2}
+\author{Jacob Shiohira}
+\maketitle
+
+\noindent
+Ch4. Q2: Let $\Omega = \{ a,b,c \}$ be a sample space, and suppose that the collection of all events is the power set of $\Omega$. You know part of a probability measure $\mathbb{P}$, and part of a probability distribution $p$. Specifically, $\mathbb{P} \{ a,b \} = .7$ and $p(b) = .1$. Provide the missing values of $\mathbb{P}$ and $p$ in such a way that $p$ is consistent with $\mathbb{P}$ in the sense of the equation $\mathbb{P}(A) = \sum_{x \in A} p(x)$. Is there only one way to do this? 
+\vspace{.5cm}
+
+\noindent
+Since $\Omega$ is finite, we can define a finite additive probability space (FAPs) such that $(\Omega, \mathcal{F}, P)$, where $\mathcal{F} = 2^{\Omega}$ and $\mathbb{P} : \Omega \rightarrow [0,1]$. By the first Kolmogorov axiom, we know $\mathbb{P}(\Omega) = \mathbb{P} \{ a,b,c \} = 1$. By the definition of $\mathbb{P}$,
+\begin{equation*}
+\mathbb{P}\{ \Omega \} = \mathbb{P}\{ a,b,c \} = \sum_{x \in \Omega } p(x) = p(a) + p(b) + p(c) = 1.
+\end{equation*}
+
+\noindent
+Since $\mathbb{P} \{ a,b \} = .7$ and $p(b) = .1$, we know $p(a) = .6$ and therefore $p(c)=.3$. Since this method is based on the definition of $\mathbb{P}$ and Kolmogorov's first axiom, I do not think there is another way to do it. \\
+
+% TODO: Is that the only way to find it?
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+Ch4. Q4: A fair die is rolled twice. What are the probabilities of the following events: 
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+
+\item the second number is twice the first? \\
+\vspace{.3cm}
+\noindent
+There are $36$ possible outcomes for the twice rolled fair die but only $3$ cases where it's possible for the second number to be exactly twice the first number - $(1,2)$, $(2,4)$, and $(3,6)$. Since the die is fair, the chance of each of the $3$ previously listed outcomes is $\frac{1}{36}$. Thus, the chance of the second number to be exactly twice the first number is $3 \cdot \frac{1}{36} = \frac{3}{36} = \frac{1}{12}$.
+
+\item the second number is not greater than the first? \\
+\vspace{.3cm}
+\noindent
+The chance that the second number is not greater than the first depends on value of the first roll of the die. So, consider the possible values of the first roll of the die and the values not greater than the value of the first roll - 
+
+\begin{align*}
+ 1 &: \{ 1 \} \\
+ 2 &: \{ 1,2 \} \\
+ 3 &: \{ 1,2,3 \} \\
+ 4 &: \{ 1,2,3,4 \} \\
+ 5 &: \{ 1,2,3,4,5 \} \\
+ 6 &: \{ 1,2,3,4,5,6 \} \\
+\end{align*}
+
+\noindent
+From this point, we can simply count the number of cases listed to find the probability. Alternatively, since there is equal probability of $\frac{1}{6}$ of rolling one of the six sides of the die, we can find the probability with
+\begin{equation*}
+\frac{1}{6} \cdot \sum_{i=1}^{6} \frac{i}{6} = \frac{1}{6} \cdot \big ( \frac{1}{6} + \frac{2}{6} + \frac{3}{6} + \frac{4}{6} + \frac{5}{6} \frac{6}{6} \big ) = \frac{21}{36}.
+\end{equation*}
+
+\item at least one number is greater than $3$? \\
+\vspace{.3cm}
+\noindent
+Since there are far fewer combinations of both numbers rolled being less than or equal to $3$ (complement of at least one number being greater than $3$), 
+\begin{equation*}
+\mathbb{P}(\text{at least one number} > 3) = 1 - \mathbb{P}(\text{both numbers} \leq 3).
+\end{equation*}
+
+\noindent
+For each roll, there is a $\frac{3}{6}$ chance that the number will be less than or equal to $3$. Thus, the probability that both numbers rolled are less than $3$ is equal to $\frac{3}{6} \cdot \frac{3}{6} = 	\frac{9}{36}$. The probability of at least one number greater than $3$ is therefore equal to $1-\frac{9}{36}=\frac{27}{36}$.
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+Ch4. Q5: Construct an example in which $1+ \mathbb{P}(A \cap B) \geq \mathbb{P}(A) + \mathbb{P}(B)$.
+
+%% TODO: fix that kolmogorov axiom
+\vspace{.5cm}
+\noindent
+Consider an experiment of tossing a fair coin once. The sample space is $\Omega=\{ H, T \}$. Let $A$ be the event that the toss results in a H, and let $B$ be the event that the toss results in a T. Since there is only one toss, the events $A,B$ are incompatible, and thus $\mathbb{P}(A \cap B)=\emptyset$. However, since the coin is fair, we know that  $\mathbb{P}(A) = \mathbb{P}(B) = \frac{1}{2} > 0$. So, it then follows that 
+
+\begin{align*}
+1+ \mathbb{P}(A \cap B) & \geq \mathbb{P}(A) + \mathbb{P}(B) \\
+1+ \emptyset & \geq \mathbb{P}(A) + \mathbb{P}(B) \\
+1 & \geq \mathbb{P}(A) + \mathbb{P}(B). \text{     } \qedsymbol
+\end{align*}
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+Ch4. Q6: Is it possible that $\mathbb{P}(A \cap B) < \mathbb{P}(A)\mathbb{P}(B)$? (When $\mathbb{P}(A \cap B)=\mathbb{P}(A)\mathbb{P}(B)$, the events $A$ and $B$ are said to be \emph{independent})
+
+\vspace{.5cm}
+\noindent
+Consider some finitely additive probability space $(\Omega, \mathcal{F}, \mathbb{P})$.  For events, $A$ and $B$, it is then possible that $\mathbb{P}(A \cap B) < \mathbb{P}(A)\mathbb{P}(B)$ when $A$ and $B$ are incompatible and $\mathbb{P}(A), \mathbb{P}(B) > 0$. It is not required in a FAP that $\mathbb{P}(A), \mathbb{P}(B) > 0$. So, if either $\mathbb{P}(A)=0$ or $\mathbb{P}(B)=0$,  it makes sense that $\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)$ because $\mathbb{P}(A \cap B) \subseteq \mathbb{P}(A)$ and $\mathbb{P}(A \cap B) \subseteq \mathbb{P}(B)$. \\
+
+% ================================================================================================
+% ================================================================================================
+
+\noindent
+Ch4. Q12: The U.S. Senate has $91$ male members and $9$ female members. Suppose that a Senate committee position must be filled, and that those of the same sex have equal probability of being chosen. Suppose also that each woman is twice as likely to be chosen as each man. Evaluate the probabilities of the following events:
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item A woman (any woman) is chosen;
+\item One of the two male senators from Indiana is chosen;
+\item Neither of the two female senators from California is chosen.
+\end{enumerate}
+\end{center}
+
+\noindent
+Let $\Omega = \big \{ m_1, \cdots, m_{91}, w_1, \cdots, w_9 \big \}$. Since the probability of choosing those of the same sex has equal probability of being chosen and each woman is twice as likely to be chosen as each man, we can find the probability of each gender,
+
+\begin{align*}
+91 \cdot \mathbb{P}(\text{man}) + 9 \cdot ( 2 \cdot \mathbb{P}(\text{man}) ) &= 1 \\
+91 \cdot \mathbb{P}(\text{man}) + 18 \cdot \mathbb{P}(\text{man})  &= 1 \\
+109 \cdot \mathbb{P}(\text{man})  &= 1.
+\end{align*}
+
+\noindent
+So, it follows that $\mathbb{P}(\text{man}_i)= \frac{1}{109}$ where $1 \leq i \leq 91$ and $\mathbb{P}(\text{woman}_j)= \frac{2}{109}$ where $1 \leq j \leq 9$.
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item Event: A woman (any woman) is chosen; \\
+\vspace{.3cm}
+\noindent
+The probability of the event that any woman is chosen can be calculated by summing the values of the probability distribution function that a single woman is chosen over all of the women in the sample space,
+
+\begin{equation*}
+\mathbb{P}(\text{choosing any woman}) = \sum_{i=1}^{9} p(w_i) = \frac{18}{109}.
+\end{equation*}
+
+\item One of the two male senators from Indiana is chosen; \\
+\vspace{.3cm}
+\noindent
+The probability that one of the two male senators from Indiana is chosen is calculated by summing the individual probabilities that each will be chosen,
+
+\begin{equation*}
+\mathbb{P}(\text{one of two male senators from Indiana chosen}) = \sum_{i=1}^{2} p(m_i) = \frac{2}{109}.
+\end{equation*}
+
+\item Neither of the two female senators from California is chosen. \\
+\vspace{.3cm}
+\noindent
+This event can be calculated as the complement of the event that both of the two female senators from California is chosen,
+\begin{equation*}
+1-\mathbb{P}(\text{both California females are chosen}) = 1-\sum_{i=1}^{2} p(w_i) = 1 - \frac{4}{109} = \frac{105}{109}.
+\end{equation*}
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+
+\end{document} 

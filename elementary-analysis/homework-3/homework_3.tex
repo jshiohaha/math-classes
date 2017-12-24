@@ -1,0 +1,213 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.7in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 1}
+\begin{flushleft}
+\begin{enumerate}
+\item $A = \{-1, 5.2,1,3.7\}$ \\
+\vspace{.3cm}
+\qquad \textbf{Upper bounds:} 5.2, 6\\
+\vspace{.3cm}
+\qquad $\forall a \in A$, $a \leq 5.2$. Thus, $5.2$ is an upper bound for $A$. \\
+\vspace{.3cm}
+\qquad $A$ is a finite set with 4 elements. Thus, the maximum element must also be the \emph{LUB(A)}. There cannot be \\
+\qquad another least upper bound because any number $n$ less than the maximum element, $5.2$ would mean that \\
+\qquad $\exists a \in A$, $a > n$, where that $a$ is $5.2$. 
+\vspace{.3cm}
+
+\item $B = [2,3) = \{x \in \mathbb{R} : 2 \leq x < 3\}$\\
+\vspace{.3cm}
+\qquad \textbf{Upper bounds:} 3, 4\\
+\vspace{.3cm}
+\qquad $\forall b \in B$, $b < 3$ because $B$ approaches $3$ but does not actually contain $3$. Thus, 3 is an upper bound for $B$. \\
+\vspace{.3cm}
+\qquad There is no \emph{LUB(B)} $ < 3$ because the elements of the set $B$ approach $3$ infinitely close. Thus, $\forall b \in B$, \\
+\qquad $b + \epsilon < 3$  meaming that there is always an element of $B$ that is more than another element but still less \\
+\qquad  than $3$. Thus, $3$ must be the \emph{lub(B)}. 
+\vspace{.3cm}
+
+\item $C = (-\infty, 4.2]$\\
+\vspace{.3cm}
+\qquad \textbf{Upper bounds:} 4.2, 5\\
+\vspace{.3cm}
+\qquad $\forall c \in C$, $c < 4.2$. Thus, $4.2$ is an upper bound for $C$. \\
+\vspace{.3cm}
+\qquad $C$ is an infinite set with a defined maximum element. Thus, the maximum element must also be the \\
+\qquad \emph{LUB(C)}. There cannot be another least upper bound because any number $n$ less than the maximum \\
+\qquad element, $4.2$ would  mean that $\exists c \in C$, $c > n$, where that $c$ is $4.2$. 
+\vspace{.3cm}
+
+% prove this better
+\item $D = \{\frac{(-1)^n}{n} : n \in \mathbb{N}\}$\\
+\vspace{.3cm}
+\qquad \textbf{Upper bounds:} $\frac{1}{2}$, $1$\\
+\vspace{.3cm}
+\qquad $\forall d \in D$, $d < \frac{1}{2}$. Thus,  $\frac{1}{2}$ is an upper bound for $D$. \\
+\vspace{.3cm}
+\qquad We know $\frac{1}{2} \in D$ because when $n=2$, $\frac{(-1)^{2}}{2}=\frac{1}{2}$. Let's assume there exists another least upper bound \\ \qquad $e=$\emph{LUB(D)} defined as $\frac{1}{2}-\epsilon$. By definition, $\frac{1}{2}-\epsilon$ must be greater than all elements in $D$, but we know $\frac{1}{2}$ \\
+\qquad is an element and greater than $\frac{1}{2}-\epsilon$. Thus, $e$ contradicts our assumption and $\frac{1}{2}$ is the \emph{LUB(D)}.\\
+\vspace{.3cm}
+
+\item $E =\{-\frac{1}{n} : n \in \mathbb{N}\}$\\
+
+\vspace{.3cm}
+\qquad \textbf{Upper bounds:} $0$, $1$\\
+\vspace{.3cm}
+\qquad $\forall e \in E$, $e < 0$. Thus, $0$ is an upper bound for $E$. \\
+\vspace{.3cm}
+\qquad Let's choose another upper bound $f$. Assume $f < 0$. Find a $k \in \mathbb{N}$ so that $-\frac{1}{k}< |f|$. Then $\frac{1}{k} > f$. Since \\
+\qquad $\frac{1}{k} \in E$, $f$ cannot be a \emph{LUB(E)}. Then, $f$ is an uppber bound and $f \geq 0$. Thus, $0$ is the \emph{LUB(E)}.
+\vspace{.3cm}
+
+\item $F = \{\sum_{k=1}^{n} \frac{1}{k} : n \in \mathbb{N}\}$\\
+
+\vspace{.3cm}
+\qquad Upper bounds: \emph{DNE}\\
+\vspace{.3cm}
+\qquad $F$ is an infinite set with no upper bound. Since it is not bounded above, it cannot have a \emph{LUB}. 
+\vspace{.3cm}
+
+\item $G = \{cos(n) : n \in \mathbb{N}\}$\\
+
+\vspace{.3cm}
+\qquad Upper bounds: $1$, $2$\\
+\vspace{.3cm}
+\qquad $\forall g \in G$, $d < 1$. Thus, $1$ is an upper bound for $G$. \\
+\vspace{.3cm}
+\qquad The finite range of the cosine function is defined as $[-1, 1]$. The maximum element must also be the \\
+\qquad \emph{LUB(G)} because $\forall g \in G$, such that $g < 1$, $g$ is not even an upper bound of $G$ and therefore cannot be a\\ 
+\qquad \emph{LUB(G)}. 
+\vspace{.3cm}
+
+\item $H = \{100n - n^2 : n \in \mathbb{N}\}$\\
+
+\vspace{.3cm}
+\qquad Upper bounds: $2500$, $2501$\\
+\vspace{.3cm}
+\qquad $\forall h \in H$, $h < 2500$. The $\frac{d}{dn}100n - n^2$ shows us that there is a maxima at $n=50$. When $n=50$, the \\
+\qquad function takes the value $2500$. Thus, $1$ is an upper bound for $H$.\\
+\vspace{.3cm}
+\qquad We know $2500$ is the maximum element in the defined range of the function $100n - n^2 : n \in \mathbb{N}$.  The \\
+\qquad maximum element must also be the \emph{LUB(H)} because $\forall h \in H$, such that $h < 2500$, $h$ is not even an upper \\
+\qquad bound of $H$ and therefore cannot be a \emph{LUB(H)}. 
+\vspace{.3cm}
+
+\end{enumerate}
+\end{flushleft}
+
+
+\section*{Problem 2}
+\begin{center}
+If $S \subset \mathbb{R}$ has a \textit{least upper bound}, then it is unique.
+\end{center}
+
+\begin{flushleft}
+\textbf{Proof} \\
+\vspace{.5cm}
+Let $S$ be a subset of $\mathbb{R}$ and assume that $p=LUB(S)$ and therefore an upper bound for $S$ as well. Let's also assume that there exists a number $q \in \mathbb{R}$ such that $q=LUB(S)$ and therefore an upper bound for $S$ as well. We know that $p \leq q$ since $p$ is a $LUB(S)$. Likewise, we know that $q \leq p$ since $q$ is a $LUB(S)$. Because both $p \leq q$ and $q \leq p$, $b=c$ must be true. Therefore, the $LUB(S)$ must be unique.
+\end{flushleft}
+
+\section*{Problem 3}
+\begin{flushleft}
+Suppose that $\lambda = lub(A)$. Let $B = \{ka | \in A \}$, where $k > 0$.
+\begin{enumerate}[a)]
+\item Show that $k\lambda$ is an upper bound for the set $B$.\\
+\vspace{.5cm}
+\qquad If $\lambda$ is \emph{lub(A)}, then $\forall a \in A$, $a \leq \lambda$. If $k > 0$ and $a \leq \lambda$, we know $ka \leq k\lambda$. Thus $k\lambda$ is an upper bound of B.
+
+\item Show that $k\lambda$ is the least upper bound for $B$. \\
+\vspace{.5cm}
+\qquad Let's assume there is another element $\gamma \in B$ such that $\gamma < \lambda$. Then, 
+\begin{center}
+$ka \leq \gamma < k\lambda$\\
+$a \leq \gamma / k < \lambda$\\
+$\gamma / k < \lambda$\\
+\end{center}
+\qquad We end up with $\gamma / k$ as greater than $a \in A$ and smaller than $\lambda$. However, we defined $\lambda$ as \emph{lub(A)}. No such \\ 
+\qquad element $\gamma$ can exist, and we end up with a contradiction. Thus, $k\lambda=$ \emph{lub(B)}.
+\item What can happen if $k < 0$?\\
+\vspace{.5cm}
+\qquad If $k < 0$, then $a \leq \lambda$ means that $ka \geq k\lambda$. In that case, the proof above does \textbf{not} hold.
+
+\end{enumerate}
+\end{flushleft}
+
+\section*{Problem 4}
+\begin{flushleft}
+Prove the following facts about real numbers, stating explicitly which field axioms/theorems you are using at each stage.
+\begin{enumerate}[a)]
+\item $\forall a, x \in \mathbb{R}$ if $a \neq 0$ and $ax = a$ then $x=1$.\\
+\vspace{.5cm}
+\qquad By A10, we know we can get $x$ alone on the left hand side of the equation $ax$ because the existence \\
+\qquad of a multiplicative inverse defined by $a^{-1} = 1/a$. So, we have
+\begin{center}
+$a^{-1} \cdot ax = a^{-1} \cdot a $ \\
+$\frac{1}{a} \cdot \frac{a}{1}x = \frac{1}{a} \cdot \frac{a}{1} $ \\
+$\frac{a}{a} \cdot x = \frac{a}{a} $ \\
+$1 \cdot x = 1 $ \\
+$x = 1$
+\end{center}
+\qquad We know see that after multiplying both sides by the multiplicative inverse of $a$ becomes $\frac{a}{a}$, which reduces to \\
+\qquad $1$. We are left with $x=1$, which is what we were trying to find.  
+
+\item $\forall a,b \in \mathbb{R}$ if $ab=0$ then $a=0$ or $b=0$. \\
+\vspace{.5cm}
+\qquad Again, by A10, we know we can utilize the existence of a multiplicative inverse to separate the variables $a$ \\
+\qquad and $b$ defined as $a^{-1} = \frac{1}{a}$ and $b^{-1} = \frac{1}{b}$, respectively. \\
+\begin{center}
+\begin{tabular}{r r r l}
+& $a^{-1} ab = 0 $ & $b^{-1} ab = 0 $ & \\
+& $\frac{1}{a} \cdot ab = 0 $ & $b^{-1} ba = 0 $ & By A7\\
+& $\frac{1}{a} \cdot \frac{a}{1}b = 0 $ & $\frac{1}{b} \frac{b}{1}a = 0 $ & \\
+& $\frac{a}{a} \cdot b = 0 $ & $\frac{b}{b} \cdot a = 0 $ & \\
+& $1 \cdot b = 0 $ & $1 \cdot a = 0 $ & \\
+By A9 & $b = 0 $ & $a = 0 $ & By A9\\
+\end{tabular}
+\end{center}
+\qquad We know see that regardless of whether we multiply $ab=0$ by the multiplicative inverse of $a$ then $b$, the \\
+\qquad resulting variable is equal to $0$. \\
+
+\item $\forall x,y \in \mathbb{R}$ if $x^2=y^2$ then $x=y$ or $x=-y$.\\
+\begin{flushleft}
+\qquad Let's assume that $x \neq y$ and $x \neq -y$. Then, by definition of the square of a number $a$, we get $a \cdot a = a^2$. \\
+
+\begin{center}
+\begin{tabular}{r c c r c}
+In the case of $x=y$, & $x \cdot x \neq y \cdot y$ & & In the case of $x=-y$, & $x \cdot x \neq (-y)(-y)$\\
+& $x^2 \neq y^2$ & & & $x^2 \neq (-1)(y)(-1)(y)$ \\
+& & & & $x^2 \neq (-1)(-1)(y)(y)$ \\
+& & & & $x^2 \neq (y)(y)$ \\
+& & & & $x^2 \neq y \cdot y$ \\
+& &  & & $x^2 \neq y^2$\\
+\end{tabular}
+\end{center}
+\qquad According to our assumption, we see that in either case, we get $x^2 \neq y^2$. However, that contradicts the \\
+\qquad original hypothesis. Thus, $x = y$ or $x = -y$.\\
+
+\end{flushleft}
+\end{enumerate}
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.7in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+Homework 4 Problem 5 Review\\
+Reviewed by Jacob Shiohira
+\end{center}
+
+\subsection*{Problem 5a}
+\begin{enumerate}
+\item I got a little confused on the step where you jump to $\abs{x-2} < \frac{\epsilon}{4}$, for $1<x<3$. I think you took $\frac{\epsilon}{\abs{x+1}}$ and plugged in $3$ for $x$, but it might be helpful if you explicitly state what you are doing.
+\item For the last part, I'm not sure that your steps are in the right order. I may be wrong but in class, we said "Let $\delta_\epsilon=$ something.  Then $0<x<\delta_\epsilon$..." Then we showed how $-\epsilon_\delta<x<\delta_\epsilon$ led to $-\epsilon<f(x)<\epsilon$. Thus, $\abs{f(x)} < \epsilon$. What you have may be fine, but I just noticed it was a little different than what we did in class.
+\end{enumerate}
+
+\subsection*{Problem 5b}
+\begin{enumerate}
+\item I like that you went through the process of actually taking the derivative of $sin(x)+cos(x)$ to show the maximum.
+\item Mayb say something about the fact that $\sqrt{2}$ being the max value of $sin(x)+cos(x)$ that it is an upper bound and if we can prove $x^2\sqrt{2} < \epsilon$, we know that $x^2(sin(x)+cos(x)) < \epsilon$ as well.
+\item Same as the proof part on $5a$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

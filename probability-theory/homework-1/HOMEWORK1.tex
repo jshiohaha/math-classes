@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage{tabu}
+\usepackage{xcolor}
+ \usepackage{mathtools}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+ 
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{black}{#1}}}\SB{#2}}
+
+% QUESTION: is it necessary to say event A in Omega?
+ 
+\begin{document}
+ %Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+ 
+\title{Math 487 Homework Ch2 Q3, 6}
+\author{Jacob Shiohira}
+\maketitle
+
+%\noindent
+%\textit{Note:} This homework took a total of 6 hours. I initially did it alone, but I did review with Jacob Warner.
+
+\noindent
+Ch2. Q3: For each of the following, construct an appropriate sample space
+and define one or two events. If you find that one of the descriptions is unclear,
+specify it as you see fit. (Resolving the ambiguity is party of the problem.)
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item There are three hats on the table: two green hats and one red hat.
+There are two ties in the closet: one green tie and one red tie. Each of
+two brothers, Ralph and Rudolph, picks one hat and one tie at random.\\
+\vspace{0.3cm}
+I consider the two green hats unique in this problem, and subscripts denote the difference in green hats. Let the sample space then be denoted by
+\begin{equation*}
+\Omega=\big \{  (GH_1, GT), (GH_1, RT), (GH_2, GT), (GH_2, RT), (RH, GT), (RH, RT)  \big \} .
+\end{equation*}
+
+\noindent
+For any event, we assume Ralph chooses first and Rudolph chooses second for every pick. Then, consider two events $A,B \in \Omega$. For event $A$, Ralph chooses Green Hat $\#1$ and the Green Tie while Rudolph chooses Green Hat $\#2$ and the Red Tie. For event $B$, Ralph chooses Red Hat and the Red Tie while Rudolph chooses Green Hat $\#1$ and the Green Tie. Then, events $A,B$ would be 
+
+\begin{center}
+\begin{tabular}{c c}
+$A=\big \{ (GH_1, GT), (GH_2, RT) \big \}$ & $B=\big \{  (RH, RT), (GH_1, GT) \big \}$.\\
+\end{tabular}
+\end{center}
+
+\item Eight swimmers compete in the final of an Olympic swimming event,
+the fastest three of whom receive medals - gold, silver, and bronze. (Only
+those receiving medals should be considered.)\\
+\vspace{0.3cm}
+Since the three medals - gold, silver, and bronze - will be given out regardless of which swimmers place in the top three, we will define the sample space, which we will call $\Omega$, according to all possible orderings of three swimmers without repetition. Since there are $8$ swimmers, the number of three swimmer combinations is $8 \cdot 7 \cdot 6=336$. Let the $i^{th}$ swimmer be denoted as $S_i$ with $1 \leq i \leq 8$ and two possible events $A,B \in \Omega$ could be
+
+\begin{center}
+\begin{tabular}{c c}
+$A=\big \{ S_1, S_2, S_3 \}$ & $B=\big \{  S_6, S_3, S_4 \big \}$.\\
+\end{tabular}
+\end{center}
+
+\noindent
+For event $A$, $S_1$ gets gold, $S_2$ gets silver, and $S_3$ gets bronze. For event $B$, $S_6$ gets gold, $S_3$ gets silver,  and $S_4$ gets bronze.
+
+\item A subject is given a list of twenty words to study and is later asked to
+repeat the words in order. (This is called a serial recall task.)\\
+\vspace{0.3cm}
+
+Let a set $W = \big \{ w_1, w_2, \cdots, w_{20} \big \}$ be the list of $20$ words. For any subject's recall, we assume the subject will be able to recall some combination of the $20$ words. Thus, the sample space, which we will call $\Omega$, would be all unique combinations of the $20$ words, and the cardinality of this sample space would be $20!$. An event $A \in \Omega$ would then be 
+\begin{equation*}
+A=\big \{ (  w_{1}, w_{3}, w_{5}, w_{7}, w_{9}, w_{11}, w_{13}, w_{15}, w_{17}, w_{19}, w_{2}, w_{4}, w_{6}, w_{8}, w_{10}, w_{12}, w_{14}, w_{16}, w_{18}, w_{20} ) \big \}.
+\end{equation*}
+
+\item Dr. Ofthwahl, an anthropologist, wishes to verify his theory that the
+length/width ratio of the face of any adult male of the Arumbaya tribe
+equals approximately 1.5. With this aim, he collects photographs of the
+faces of dozens of subjects and takes measurements.\\
+\vspace{0.3cm}
+
+The sample space for this problem can be defined as $\Omega = (0, \infty)$. Even though it's likely very close to impossible for a ratio outside some delta range from $1.5$, this sample space accounts for any outliers. Consider events $A, B \in \Omega$,
+
+\begin{center}
+\begin{tabular}{c c}
+$A=\big \{ 1.3, 1.5, 1.6  \}$ & $B=\big \{  1.1, 1.2, 1.5, 1.6, 1.8, 1.4, 1.3 \big \}$.\\
+\end{tabular}
+\end{center}
+
+\noindent
+For event $A$, there are only $3$ ratio measurements while there are $7$ ratio measurements for event $B$.
+
+\item Each of $n$ letters is removed from its envelope. The letters are thoroughly mixed and then placed blindly back into the envelopes, with each
+envelope getting exactly on letter.\\
+\vspace{0.3cm}
+
+The most descriptive sample space, which we will call $\Omega$, would be every unique ordering of letters in envelopes. Since there are $n$ letters and $n$ envelopes, there are $n$ number of ways of choosing the first combination, $(n-1)$ ways of choosing the second combination, and so on. The size of the sample space for this problem would be $n!$. Then, the event $A \in \Omega$ of this sample space where no letters were put back into the correct envelope would be 
+\begin{equation*}
+A=\big \{ ( L_{1}E_{n}, L_{2}E_{n-2}, L_{3}E_{n-3}, \cdots, L_{n}E_{1} ) \big \}.
+\end{equation*}
+
+\item A gambler plays a game in which she either wins $1$ dollar or loses $1$
+dollar on each turn. She begins the game with $k$ dollars and wishes to
+know how long she will be able to play before either her money runs out
+or she accumulates $N$ dollars. \\
+\vspace{0.3cm}
+The problem states that the gambler does not quit until she either has no money left or accumulates $N$ in addition to her $k$ dollars that she starts out with. So, at minimum, the gambler will play for $k$ turns because that is the least number of turns where she could end up with no money if she loses $1$ dollar on each of the $k$ turns. Therefore, the sample space, which we will refer to as $\Omega$, for this problem can be defined as 
+\begin{equation*}
+\Omega=\big \{  k, k+1, k+2, \cdots, k+m \big \},
+\end{equation*}
+
+\noindent
+where $m \in \N$. The size of $\Omega$ is infinitely countable in this case. Then, the event $A \in \Omega$ where the gambler only plays $k$ turns before running out of money and quitting would be
+\begin{equation*}
+A=\big \{ k \big \}.
+\end{equation*}
+
+\end{enumerate}
+\end{center}
+
+% ================================================================================================
+% ================================================================================================
+% ================================================================================================
+% ================================================================================================
+% ================================================================================================
+
+\noindent Q6: In a voting scheme called approval voting, a participant may vote for any subset of candidates. Suppose that there is a set $C = \big \{ c_1,...,c_n \big \}$ of candidates.
+
+\begin{center}
+\begin{enumerate}[label=(\alph*)]
+\item What is the sample space for such a scheme? What is the size of this
+sample space? \\
+\vspace{0.3cm}
+% For power set notation, does it need to be 2^|C|
+Since a participant may vote for any subset of set $C$ of candidates and the sample space is the set of all outcomes of an experiment, the sample space is the power set of set $C$, or equivalently, $2^C$. The size of the sample space would therefore be the cardinality of the power set, $|2^C|$. 
+
+\item How many possible events are there for this sample space? \\
+\vspace{0.3cm}
+Since an event is defined as a subset of the sample space, there are $2^n$ possible events because there are $n$ candidates to choose from. In this case, $2^n=|2^C|=2^{|C|}$. \\
+
+\item Define the event ``candidate $c_1$ is not voted for by the participant.'' Write out this event explicitly for the case $n = 3$. \\
+\vspace{0.3cm}
+If $n=3$, then the sample space would be 
+\begin{equation*}
+\big \{\emptyset, \{c_1\}, \{c_2\}, \{c_3\}, \{c_1, c_2\}, \{c_1, c_3\}, \{c_2, c_3\}, \{c_1, c_2, c_3\} \big \}.
+\end{equation*}
+\noindent
+For an event $E$ such that ``candidate $c_1$ is not voted for by the participant'', $E= \big \{\emptyset, \{c_2\}, \{c_3\}, \{c_1, c_3\}, \{c_2, c_3\} \big \}$.
+ \end{enumerate}
+\end{center}
+
+\end{document} 

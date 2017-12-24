@@ -1,0 +1,244 @@
+\documentclass{article}
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings} % Required for inserting code snippets
+\usepackage{geometry}
+\geometry{margin=0.7in}
+\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 1}
+\begin{flushleft}
+\textit{Several useful inequalities involving absolute values can be derived from the triangle inequality by a judicious choice for a and b.}
+\begin{enumerate}[(a)]
+For any of these examples, we can redefine $x$ and $y$ to be $a$ and $b$, which will help us reduce to the following variants of the triangle inequalities. For each of the following inequalities, I use the following format $\abs{a} + \abs{b} \leq \abs{a+b}$.
+
+\item $\abs{x} - \abs{y} \leq \abs{x-y}$ \\
+\vspace{.3cm}
+Here we will let $a=(x-y)$ and $b=y$. Then, we see that \\
+\begin{center}
+$\abs{x-y+y} \leq \abs{x-y} + \abs{y} \implies \abs{x} \leq \abs{x-y} + \abs{y} \implies \abs{x} - \abs{y} \leq \abs{x-y}$
+\end{center}
+
+\item $\abs{x} - \abs{y} \leq \abs{x+y}$ \\
+\vspace{.3cm}
+Here we will let $a=(x+y)$ and $b=-y$. Then, we see that \\
+\begin{center}
+$\abs{x+y+(-y)} \leq \abs{x+y} + \abs{-y} \implies \abs{x} \leq \abs{x+y} + \abs{y} \implies \abs{x} - \abs{y} \leq \abs{x+y}$ 
+\end{center}
+
+\item $\abs{x} + \abs{y} \geq \abs{x-y}$ \\
+\vspace{.3cm}
+Here we will let $a=x$ and $b=-y$. Then, we see that \\
+\begin{center}
+$\abs{x+(-y)} \leq \abs{x} + \abs{-y} \implies \abs{x-y} \leq \abs{x} + \abs{y}$ 
+\end{center}
+
+\item $\abs{\abs{x} - \abs{y}} \leq \abs{x-y}$ \\
+\vspace{.5cm}
+To prove this, we will set up 2 different equations. \\
+\begin{center}
+\begin{tabular}{c c}
+(1) $\abs{y-x+x} \leq  \abs{y-x} + \abs{x}$ &
+(2) $\abs{x-y+y} \leq \abs{x-y} + \abs{y}$ \\
+\end{tabular}
+\end{center}
+(1) We can move the $\abs{x}$ from the left side to the right side and take negative one out of the left hand side, \\
+which gives us $-(\abs{x}-\abs{y}) \leq \abs{y-x} $. \\
+(2) We can move the $\abs{y}$ from the left side to the right side, which gives us $\abs{x}-\abs{y} \leq \abs{x-y}$. \\
+\vspace{0.5cm}
+From the properties of absolute values, we know $\abs{x-y} = \abs{y-x}$ and if $x \geq a$ and $x \geq -a$ then $x \geq \abs{a}$. \\
+
+From the combination of these two facts, we now have $\abs{\abs{x}-\abs{y}} \leq \abs{x-y}$.
+\end{enumerate}
+\end{flushleft}
+
+\section*{Problem 2}
+\begin{flushleft}
+Recall the definition of what it means for $S \subset \mathbb{R}$ to be \textit{bounded above, bounded below} and just \textit{bounded}. Prove that $S$ is bounded if and ony if there is a real number $M > 0$ such that
+\begin{center}
+$\forall s \in S, \abs{s} \leq M$
+\end{center}
+
+\textbf{Proof} \\
+\vspace{.3cm}
+
+Let's assume $S \subset \mathbb{R}$, then $\abs{s} \leq M$ means that $-M < s < M$, $\forall s \in S$. $S$ is bounded above if there exists some $X \in \mathbb{R}$ such that $\forall s \in S$, $s < X$. Likewise, $S$ is bounded below if there exists some $x \in \mathbb{R}$ such that $\forall s \in S$, $x < s$.  Thus, we see that $M$ is in fact an upper bound for $S$ because $s < M$, $\forall s \in S$ and that $-M$ is in fact a lower bound for $S$ because $-M < s$, $\forall s \in S$. Therefore, since $S$ is bounded above and below, $S$ is, by definition, bounded.
+\end{flushleft}
+
+\section*{Problem 3}
+\begin{flushleft}
+We say that a function f is \textit{invertible} if $f^{-1} = \{ (b,a) : (a,b) \in f \}$ is also a function, in which case we call it the inverse function to $f$. Notice that \\
+\begin{center}
+$f^{-1}(b) = (a) \leftrightarrow b = f(a)$,
+\end{center}
+assuming that $f^{-1}$ is a function.
+\begin{enumerate}[(a)]
+\item If $f$ is invertible, what are the domain and range of $f^{-1}$? \\
+\item Which of the following functions are invertible? For those that are invertible, give the inverse. \\
+\end{enumerate}
+\begin{center}
+\begin{tabular}{l l}
+$l = \{(x,y) \in \mathbb{R}^2 : y = 2x + 1\}$ & Inverse: $y=\frac{x-1}{2}$, Domain: $\mathbb{R}$, Range: $\mathbb{R}$ \\
+\vspace{.2cm}
+$c = \{(x,y) \in \mathbb{R}^2 : y \geq 0, x^2 + y^2 = 1\}$ & Not invertible \\
+\vspace{.2cm}
+$s = \{(x,y) \in \mathbb{R}^2 : y = x^2\}$ & Not invertible\\
+\vspace{.2cm}
+$ \sqrt = (x,y) \in \mathbb{R}^2 : y \geq 0, y^2 = x\}$ & Inverse: $y=x^2$, Domain: $\mathbb{R}$, Range: $[0, \infty)$ \\
+\vspace{.2cm}
+$sin = \{(x,y) \in \mathbb{R}^2 : y = sin(x)\}$ & Not invertible \\
+\end{tabular}
+\end{center}
+\end{flushleft}
+
+\section*{Problem 4}
+\begin{flushleft}
+Assume that $g$ is bounded function, that is, $\abs{g(x)} < B$ for all $x \in \mathbb{R}$. Prove that
+$\displaystyle \lim_{x \to 0}  x \cdot g(x) = 0$. \\
+
+\vspace{.5cm}
+
+\begin{center}
+$c=0$, $L=0$, $f(x)=x \cdot g(x)$
+\end{center}
+
+$\abs{f(x) - L} < \epsilon \implies \abs{x \cdot g(x) - 0} < \epsilon \implies \abs{x \cdot g(x)} < \epsilon$. \\
+\vspace{.2cm}
+At its max, $g(x)$ can be no greater than $B$. Thus, we know $B$ is an upper bound for $f(x)$. We can rewrite $f(x)$ as $\abs{x \cdot B}$. Thus, $\abs{x \cdot B} < \epsilon \implies -\epsilon < x \cdot B < \epsilon$. By dividing by $B$ on both sides, we have $\frac{-\epsilon}{B} < x < \frac{\epsilon}{B}$. \\
+
+\subsection*{Proof}
+Let $\delta_\epsilon = \frac{\epsilon}{B}$. Then $\abs{x - 0} < \delta_\epsilon \implies \delta_\epsilon < x - 0 < \delta_\epsilon$. \\
+\begin{center}
+$\frac{-\epsilon}{B} < x < \frac{\epsilon}{B}$ \\
+\vspace{.2cm}
+$-\epsilon < x \cdot B < \epsilon$ \\
+\vspace{.2cm}
+$\abs{x \cdot B} < \epsilon$
+\end{center}
+
+Since we said $g(x) < B$, $\forall x \in \mathbb{R}$, we know the following inequality to be true: $x \cdot g(x) < \abs{x \cdot B} < \epsilon$. This completes the proof.
+\end{flushleft}
+
+\section*{Problem 5}
+\begin{flushleft}
+Using the \textquotedbl$\epsilon - \delta$\textquotedbl \hspace{.01cm} definition to prove that \\
+\begin{enumerate}[(a)]
+\item $\displaystyle \lim_{x \to 2} (4x+1) = 9$
+
+\begin{center}
+$\abs{f(x) - L} < \epsilon \implies \abs{(4x+1) - 9} < \epsilon \implies \abs{4x-8} < \epsilon \implies  \abs{4(x-2)} \implies \abs{x-2} < \frac{\epsilon}{4}$ \\
+\end{center}
+
+\subsection*{Proof}
+
+Let $\delta_\epsilon \implies \frac{\epsilon}{4}$. Then, $0 < \abs{x-2} < \frac{\epsilon}{4} \implies -\frac{\epsilon}{4} < x-2 < \frac{\epsilon}{4}$. \\
+\begin{center}
+\vspace{.2cm}
+$\frac{\epsilon}{4} < x-2 < \frac{\epsilon}{4}$ \\
+\vspace{.2cm}
+$-\epsilon < 4(x-2) < \epsilon$ \\
+\vspace{.2cm}
+$-\epsilon < 4x-8 < \epsilon$ \\
+\vspace{.2cm}
+$-\epsilon < (4x+1)-9 < \epsilon$ \\
+\vspace{.2cm}
+$\abs{(4x+1)-9} < \epsilon$ \\
+\end{center}
+
+This completes the proof because we showed $\abs{f(x) - L} < \epsilon$ for a specific $\delta$. \\
+
+\item $\displaystyle \lim_{x \to 5} \sqrt{x + 4} = 3$
+
+\begin{center}
+$\abs{f(x) - L} < \epsilon \implies \abs{\sqrt{x + 4} - 3} < \epsilon$ implies \\
+\vspace{.3cm}
+$-\epsilon < \sqrt{x + 4} - 3 < \epsilon$ \\
+\vspace{.2cm}
+$-\epsilon  + 3< \sqrt{x + 4} < \epsilon + 3$ \\
+\vspace{.2cm}
+$(-\epsilon  + 3)^2 < x + 4 < (\epsilon + 3)^2$ \\
+\vspace{.2cm}
+$(-\epsilon  + 3)^2 - 9 < x - 5 < (\epsilon + 3)^2 - 9$ \\
+\end{center}
+
+You can see that we subtracted 9 to both sides at the end. That is because our $\abs{x-p}$ value is $\abs{x-5}$. \\
+
+\subsection*{Proof}
+Let $\delta_\epsilon = (\epsilon + 3)^2 - 9$. Then, $0 < \abs{x-5} < (\epsilon + 3)^2 + 9$ implies \\
+\begin{center}
+\vspace{.2cm}
+$(-\epsilon  + 3)^2 - 9 < x - 5 < (\epsilon + 3)^2 - 9$ \\
+\vspace{.2cm}
+$(-\epsilon  + 3)^2 < x + 4 < (\epsilon + 3)^2$ \\
+\vspace{.2cm}
+$-\epsilon  + 3< \sqrt{x + 4} < \epsilon + 3$ \\
+\vspace{.2cm}
+$-\epsilon < \sqrt{x + 4} - 3 < \epsilon$ \\
+\end{center}
+
+This completes the proof because we showed $\abs{f(x) - L} < \epsilon$ for a specific $\delta$. \\
+
+\item $\displaystyle \lim_{x \to 3} \frac{1}{8 - 4x} = \frac{1}{4}$
+
+
+\begin{center}
+$\abs{f(x) - L} < \epsilon \implies \abs{\frac{1}{8 - 4x} - \frac{1}{4}} < \epsilon$ implies \\
+\vspace{.3cm}
+$-\epsilon < \frac{1}{8 - 4x} - \frac{1}{4} < \epsilon$ \\
+\vspace{.2cm}
+$-\epsilon + \frac{1}{4} < \frac{1}{-4(x-2)} < \epsilon + \frac{1}{4}$ \\
+\vspace{.2cm}
+$4\epsilon - 1 > \frac{1}{x-2} > -4\epsilon - 1$ \\
+\vspace{.2cm}
+$\frac{1}{4\epsilon - 1} > x-2 > \frac{1}{-4\epsilon - 1}$ \\
+\vspace{.2cm}
+$\frac{1}{4\epsilon - 1} - 1> x-3 > \frac{1}{-4\epsilon - 1} - 1$ \\
+\end{center}
+
+You can see that we subtracted 1 to on sides at the end. That is because our $\abs{x-p}$ value is $\abs{x-3}$. \\
+
+\subsection*{Proof}
+
+Let $\delta_\epsilon = \frac{1}{-4\epsilon - 1} - 1$. Then, $0 < \abs{x-3} < \frac{1}{-4\epsilon - 1} - 1$ implies \\
+\begin{center}
+\vspace{.2cm}
+$\frac{1}{4\epsilon - 1} - 1 > x - 3 > \frac{1}{-4\epsilon - 1} - 1$ \\
+\vspace{.2cm}
+$\frac{1}{4\epsilon- 1} > x - 2 > \frac{1}{-4\epsilon - 1}$ \\
+\vspace{.2cm}
+$4\epsilon - 1 > \frac{1}{x - 2} > -4\epsilon - 1$ \\
+\vspace{.2cm}
+$-\epsilon + \frac{1}{4} < \frac{1}{-4(x-2)} < \epsilon + \frac{1}{4}$ \\
+\vspace{.2cm}
+$-\epsilon < \frac{1}{-4(x-2)} - \frac{1}{4} < \epsilon$ \\
+\vspace{.2cm}
+$-\epsilon < \frac{1}{8-4x} - \frac{1}{4} < \epsilon$ \\
+\end{center}
+
+This completes the proof because we showed $\abs{f(x) - L} < \epsilon$ for a specific $\delta$. \\
+
+\end{enumerate}
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
